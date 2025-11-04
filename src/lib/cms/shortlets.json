@@ -1,0 +1,216 @@
+{
+  "shortlets": [
+    {
+      "id": "lekki-1br-apartment",
+      "slug": "lekki-1br-apartment",
+      "title": "1BR Apartment – Lekki Phase 1",
+      "location": "Lekki Phase 1, Lagos",
+      "location_details": {
+        "area": "Lekki Phase 1",
+        "city": "Lagos",
+        "state": "Lagos",
+        "nearby": "5 mins to Lekki-Ikoyi Link Bridge, 10 mins to Oniru Beach, Close to restaurants and shopping"
+      },
+      "property_type": "Apartment",
+      "price_per_night_ngn": 45000,
+      "price_per_night_usd": 55,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "max_guests": 2,
+      "description": "Modern 1-bedroom apartment in the heart of Lekki Phase 1. Perfect for business travelers or couples seeking a comfortable Lagos stay. Fully furnished with contemporary amenities, secure estate with 24/7 security, and convenient access to major business districts.",
+      "amenities": [
+        "Wi-Fi",
+        "Air Conditioning",
+        "Smart TV",
+        "Full Kitchen",
+        "Washing Machine",
+        "Workspace/Desk",
+        "Free Parking",
+        "24/7 Security",
+        "Backup Generator",
+        "Swimming Pool (Estate)",
+        "Gym (Estate)",
+        "Balcony"
+      ],
+      "features": [
+        "Self check-in with lockbox",
+        "Quiet neighborhood",
+        "Walking distance to restaurants",
+        "Pet-friendly (small pets only)",
+        "Smoking not allowed",
+        "Events not allowed"
+      ],
+      "policies": {
+        "check_in": "2:00 PM",
+        "check_out": "12:00 PM",
+        "minimum_stay": "2 nights",
+        "cancellation": "Free cancellation 7 days before check-in. 50% refund if cancelled 3-7 days before. No refund within 3 days of check-in.",
+        "deposit": "₦50,000 refundable security deposit required",
+        "house_rules": [
+          "No smoking inside the apartment",
+          "No parties or events",
+          "Quiet hours: 10 PM - 7 AM",
+          "Maximum 2 guests",
+          "Pets allowed (small, house-trained only) - ₦5,000/night fee",
+          "Guest is responsible for any damages"
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
+        "https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=1200&q=80",
+        "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1200&q=80"
+      ],
+      "rating": 4.8,
+      "reviews_count": 24,
+      "host_name": "Ontour Travels",
+      "host_response_time": "Within 1 hour",
+      "whatsapp_prefill": "Hi Ontour, I'm interested in booking the 1BR Apartment in Lekki Phase 1. Could you check availability for my dates?",
+      "status": "available",
+      "featured": true
+    },
+    {
+      "id": "vi-luxury-2br",
+      "slug": "vi-luxury-2br",
+      "title": "Luxury 2BR – Victoria Island",
+      "location": "Victoria Island, Lagos",
+      "location_details": {
+        "area": "Victoria Island",
+        "city": "Lagos",
+        "state": "Lagos",
+        "nearby": "Walking distance to Eko Hotel, Near corporate offices, 5 mins to Bar Beach"
+      },
+      "property_type": "Apartment",
+      "price_per_night_ngn": 75000,
+      "price_per_night_usd": 90,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "max_guests": 4,
+      "description": "Exquisite 2-bedroom luxury apartment in prestigious Victoria Island. Ideal for executives, families, or groups. Features high-end finishes, floor-to-ceiling windows with Lagos skyline views, and access to premium building amenities including rooftop pool and 24-hour concierge.",
+      "amenities": [
+        "High-Speed Wi-Fi",
+        "Air Conditioning (All Rooms)",
+        "55\" Smart TV",
+        "Gourmet Kitchen",
+        "Washer & Dryer",
+        "Home Office Setup",
+        "Free Parking (2 Spaces)",
+        "24/7 Concierge",
+        "Backup Generator",
+        "Rooftop Pool",
+        "Fitness Center",
+        "Elevator",
+        "Balcony with View"
+      ],
+      "features": [
+        "Contactless check-in",
+        "Premium location",
+        "Business-ready workspace",
+        "Suitable for corporate stays",
+        "Non-smoking property",
+        "Family-friendly"
+      ],
+      "policies": {
+        "check_in": "3:00 PM",
+        "check_out": "11:00 AM",
+        "minimum_stay": "3 nights",
+        "cancellation": "Free cancellation 10 days before check-in. 50% refund if cancelled 5-10 days before. No refund within 5 days of check-in.",
+        "deposit": "₦100,000 refundable security deposit required",
+        "house_rules": [
+          "Strictly no smoking",
+          "No parties or events",
+          "Quiet hours: 10 PM - 8 AM",
+          "Maximum 4 guests",
+          "No pets allowed",
+          "Visitors must register with security",
+          "Maintain property cleanliness"
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
+        "https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=1200&q=80",
+        "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=1200&q=80",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80"
+      ],
+      "rating": 4.9,
+      "reviews_count": 31,
+      "host_name": "Ontour Travels",
+      "host_response_time": "Within 30 minutes",
+      "whatsapp_prefill": "Hi Ontour, I'd like to inquire about the Luxury 2BR in Victoria Island. Is it available for my travel dates?",
+      "status": "available",
+      "featured": true
+    },
+    {
+      "id": "ikeja-studio",
+      "slug": "ikeja-studio",
+      "title": "Cozy Studio – Ikeja GRA",
+      "location": "Ikeja GRA, Lagos",
+      "location_details": {
+        "area": "Ikeja GRA",
+        "city": "Lagos",
+        "state": "Lagos",
+        "nearby": "15 mins to Airport, Close to Ikeja City Mall, Near government offices"
+      },
+      "property_type": "Studio",
+      "price_per_night_ngn": 35000,
+      "price_per_night_usd": 42,
+      "bedrooms": 0,
+      "bathrooms": 1,
+      "max_guests": 2,
+      "description": "Charming studio apartment in quiet Ikeja GRA neighborhood. Perfect for solo travelers or couples needing a cozy, affordable base in Lagos. Newly renovated with modern amenities, kitchenette, and comfortable workspace. Excellent for airport proximity and business meetings in Ikeja area.",
+      "amenities": [
+        "Wi-Fi",
+        "Air Conditioning",
+        "Smart TV (43\")",
+        "Kitchenette",
+        "Microwave & Fridge",
+        "Work Desk",
+        "Free Parking",
+        "24/7 Security",
+        "Generator Backup",
+        "Iron & Board",
+        "Coffee Maker",
+        "Private Entrance"
+      ],
+      "features": [
+        "Self check-in available",
+        "Close to airport",
+        "Quiet residential area",
+        "Budget-friendly",
+        "Non-smoking",
+        "Long-term stays welcome"
+      ],
+      "policies": {
+        "check_in": "2:00 PM",
+        "check_out": "12:00 PM",
+        "minimum_stay": "1 night",
+        "cancellation": "Free cancellation 5 days before check-in. 50% refund if cancelled 2-5 days before. No refund within 2 days of check-in.",
+        "deposit": "₦30,000 refundable security deposit required",
+        "house_rules": [
+          "No smoking indoors",
+          "No parties or loud events",
+          "Quiet hours: 10 PM - 7 AM",
+          "Maximum 2 guests",
+          "Small pets negotiable (contact host)",
+          "Keep space tidy"
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=80",
+        "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=1200&q=80"
+      ],
+      "rating": 4.7,
+      "reviews_count": 18,
+      "host_name": "Ontour Travels",
+      "host_response_time": "Within 2 hours",
+      "whatsapp_prefill": "Hi Ontour, I'm interested in the Cozy Studio in Ikeja GRA. Please let me know if it's available.",
+      "status": "available",
+      "featured": true
+    }
+  ]
+}

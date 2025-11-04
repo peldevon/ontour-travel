@@ -1,0 +1,238 @@
+{
+  "tours": [
+    {
+      "id": "weekend-in-dubai",
+      "slug": "weekend-in-dubai",
+      "title": "Weekend in Dubai",
+      "category": "international",
+      "tags": ["luxury", "couple", "family", "visa-support"],
+      "duration_days": 4,
+      "duration_nights": 3,
+      "price_from_ngn": 850000,
+      "price_from_usd": 950,
+      "short_description": "Experience the glitz and glamour of Dubai with a perfect weekend escape",
+      "highlights": [
+        "Round-trip flights from Lagos",
+        "3 nights in 4-star hotel",
+        "Dubai Mall & Burj Khalifa visit",
+        "Desert Safari with BBQ dinner",
+        "Visa assistance included"
+      ],
+      "inclusions": [
+        "Round-trip economy flights (LOS-DXB-LOS)",
+        "3 nights accommodation (4-star hotel, twin sharing)",
+        "Daily breakfast",
+        "Airport transfers",
+        "Desert Safari experience",
+        "Dubai city tour",
+        "Visa support & processing"
+      ],
+      "exclusions": [
+        "Travel insurance",
+        "Meals not specified",
+        "Personal expenses",
+        "Optional tours and activities",
+        "Tips and gratuities"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Check-in",
+          "description": "Arrive at Dubai International Airport. Meet and greet by our representative. Transfer to your hotel. Evening at leisure to explore nearby areas or rest."
+        },
+        {
+          "day": 2,
+          "title": "Dubai City Tour & Burj Khalifa",
+          "description": "Morning city tour covering Dubai Marina, Palm Jumeirah, and Burj Al Arab photo stop. Afternoon visit to Dubai Mall and Burj Khalifa observation deck (124th floor). Evening free for shopping or dining."
+        },
+        {
+          "day": 3,
+          "title": "Desert Safari Adventure",
+          "description": "Morning at leisure. Afternoon pickup for desert safari including dune bashing, camel ride, sandboarding, and traditional BBQ dinner with live entertainment under the stars."
+        },
+        {
+          "day": 4,
+          "title": "Departure",
+          "description": "Check out from hotel. Transfer to airport for your flight back to Lagos. Arrive home with unforgettable memories."
+        }
+      ],
+      "accommodation_examples": [
+        "Rove Downtown Dubai",
+        "ibis One Central",
+        "Citymax Hotel Bur Dubai"
+      ],
+      "seasonality": "Best time: October - April (cooler weather)",
+      "visa_notes": "UAE tourist visa required. We provide full support including documentation guidance and application processing. Processing time: 3-5 working days. Valid passport required (minimum 6 months validity).",
+      "add_ons": [
+        "Hotel upgrade to 5-star: +₦150,000",
+        "Burj Khalifa top floor (148th): +₦45,000",
+        "Global Ville theme park: +₦35,000",
+        "Travel insurance: +₦25,000"
+      ],
+      "cancellation_terms": "50% deposit required to secure booking. Balance due 14 days before departure. Cancellations more than 30 days before departure: 50% refund. 15-30 days: 25% refund. Less than 15 days: non-refundable. Flight tickets are non-refundable once issued.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80",
+        "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=1200&q=80",
+        "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=80",
+        "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=80",
+        "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=80"
+      ],
+      "whatsapp_prefill": "Hi Ontour, I'm interested in the Weekend in Dubai package (4D/3N). Could you send me more details and available dates?",
+      "status": "published"
+    },
+    {
+      "id": "zanzibar-escape",
+      "slug": "zanzibar-escape",
+      "title": "Zanzibar Escape",
+      "category": "regional",
+      "tags": ["beach", "couple", "honeymoon", "relaxation"],
+      "duration_days": 5,
+      "duration_nights": 4,
+      "price_from_ngn": 650000,
+      "price_from_usd": 750,
+      "short_description": "Pristine beaches, historic Stone Town, and turquoise waters await you",
+      "highlights": [
+        "Direct flights from Lagos",
+        "4 nights beachfront resort",
+        "Stone Town heritage tour",
+        "Spice plantation visit",
+        "Snorkeling at Mnemba Island"
+      ],
+      "inclusions": [
+        "Round-trip flights (LOS-ZNZ-LOS)",
+        "4 nights beachfront accommodation",
+        "Daily breakfast and 2 dinners",
+        "Airport transfers",
+        "Stone Town guided tour",
+        "Spice tour",
+        "Snorkeling trip"
+      ],
+      "exclusions": [
+        "Travel insurance",
+        "Lunches and additional dinners",
+        "Water sports activities",
+        "Personal expenses",
+        "Optional excursions"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Beach Relaxation",
+          "description": "Arrive in Zanzibar. Transfer to your beachfront resort. Spend the afternoon relaxing on pristine white sand beaches. Welcome dinner at the resort."
+        },
+        {
+          "day": 2,
+          "title": "Stone Town Discovery",
+          "description": "Morning guided tour of UNESCO World Heritage Stone Town - explore narrow alleys, historic buildings, and vibrant markets. Visit House of Wonders and Old Fort. Afternoon return to resort for beach time."
+        },
+        {
+          "day": 3,
+          "title": "Spice Plantation & Local Culture",
+          "description": "Half-day spice tour visiting clove, vanilla, and cinnamon plantations. Learn about Zanzibar's spice trade history. Afternoon at leisure for swimming or optional water sports."
+        },
+        {
+          "day": 4,
+          "title": "Mnemba Island Snorkeling",
+          "description": "Full-day boat trip to Mnemba Atoll for world-class snorkeling among colorful coral reefs and tropical fish. Beachside lunch included. Return to resort for final evening."
+        },
+        {
+          "day": 5,
+          "title": "Departure",
+          "description": "Leisurely breakfast. Late check-out available. Transfer to airport for your flight back to Lagos."
+        }
+      ],
+      "accommodation_examples": [
+        "Zanzibar Queen Hotel",
+        "Waridi Beach Resort & Spa",
+        "Royal Zanzibar Beach Resort"
+      ],
+      "seasonality": "Best time: June - October & December - February (dry season)",
+      "visa_notes": "Visa on arrival available for Nigerian passport holders (USD 50, payable in cash). Ensure passport validity of minimum 6 months.",
+      "add_ons": [
+        "Scuba diving (2 dives): +₦85,000",
+        "Sunset dhow cruise: +₦40,000",
+        "Jozani Forest tour: +₦30,000",
+        "Travel insurance: +₦20,000"
+      ],
+      "cancellation_terms": "50% deposit to secure. Balance due 21 days before travel. Cancellations 30+ days: 50% refund. 15-30 days: 25% refund. Less than 15 days: non-refundable.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1565552645632-d725f8bfc19d?w=1200&q=80",
+        "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1200&q=80",
+        "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?w=1200&q=80",
+        "https://images.unsplash.com/photo-1561459496-9f7d2f2b8f6d?w=1200&q=80"
+      ],
+      "whatsapp_prefill": "Hi Ontour, I'm interested in the Zanzibar Escape package (5D/4N). Please share available dates and pricing.",
+      "status": "published"
+    },
+    {
+      "id": "obudu-cattle-ranch",
+      "slug": "obudu-cattle-ranch",
+      "title": "Obudu Cattle Ranch Mountain Resort",
+      "category": "local",
+      "tags": ["nature", "adventure", "family", "weekend"],
+      "duration_days": 3,
+      "duration_nights": 2,
+      "price_from_ngn": 180000,
+      "price_from_usd": 220,
+      "short_description": "Nigeria's premier mountain resort with breathtaking views and cool climate",
+      "highlights": [
+        "Cable car ride experience",
+        "Mountain hiking trails",
+        "Canopy walkway",
+        "Waterfall visits",
+        "Cool mountain climate"
+      ],
+      "inclusions": [
+        "2 nights resort accommodation",
+        "Daily breakfast and dinner",
+        "Cable car rides (return)",
+        "Guided nature walks",
+        "Canopy walkway access",
+        "All resort entrance fees"
+      ],
+      "exclusions": [
+        "Flights/transport to Calabar",
+        "Ground transport Calabar-Obudu (can be arranged)",
+        "Lunches",
+        "Optional activities (horse riding, ATV)",
+        "Personal expenses"
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Cable Car Experience",
+          "description": "Arrive at Obudu Mountain Resort base. Take the scenic cable car ride (25 minutes) up to the resort at 1,576m altitude. Check in and enjoy the cool mountain breeze. Evening at leisure exploring the resort grounds."
+        },
+        {
+          "day": 2,
+          "title": "Nature Trails & Canopy Walk",
+          "description": "Morning guided hike through pristine forest trails spotting unique flora and fauna. Experience the thrilling canopy walkway suspended above the forest. Afternoon visit to scenic waterfalls. Evening bonfire (weather permitting)."
+        },
+        {
+          "day": 3,
+          "title": "Leisure & Departure",
+          "description": "Early morning optional horse riding or ATV adventure (extra cost). Late breakfast and resort exploration. Check out and cable car descent. Depart for Calabar/onward journey."
+        }
+      ],
+      "accommodation_examples": [
+        "Obudu Mountain Resort (Standard Chalets)"
+      ],
+      "seasonality": "Year-round destination. Dry season (November - March) recommended for clearer views.",
+      "visa_notes": "No visa required for Nigerian residents. Valid ID required.",
+      "add_ons": [
+        "Transport from Calabar airport (return): +₦50,000",
+        "Horse riding (1 hour): +₦15,000",
+        "ATV adventure: +₦25,000",
+        "Flight Lagos-Calabar-Lagos: +₦120,000"
+      ],
+      "cancellation_terms": "50% deposit required. Full payment 7 days before travel. Cancellations 14+ days: 75% refund. 7-14 days: 50% refund. Less than 7 days: non-refundable.",
+      "gallery": [
+        "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=1200&q=80",
+        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80"
+      ],
+      "whatsapp_prefill": "Hi Ontour, I'd like to book the Obudu Cattle Ranch trip (3D/2N). Please send me available dates.",
+      "status": "published"
+    }
+  ]
+}
