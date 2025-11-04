@@ -37,7 +37,6 @@ import {
 import { useState } from "react";
 
 const MotionBox = motion.create(Box);
-const MotionCard = motion.create(Card.Root);
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -437,13 +436,16 @@ function TrustCard({ icon, title, description }: any) {
 
 function PropertyCard({ image, title, location, price, rating, reviews, amenities }: any) {
   return (
-    <MotionCard
+    <Box
+      as={motion.div}
       overflow="hidden"
       cursor="pointer"
       variants={fadeInUp}
       whileHover={{ y: -10, boxShadow: "xl" }}
       transition={{ duration: 0.3 }}
       bg="white"
+      borderRadius="lg"
+      boxShadow="md"
     >
       <Box position="relative" h="56" overflow="hidden">
         <Image 
@@ -470,7 +472,7 @@ function PropertyCard({ image, title, location, price, rating, reviews, amenitie
           </HStack>
         </Box>
       </Box>
-      <Card.Body p={5}>
+      <Box p={5}>
         <HStack gap={2} mb={2}>
           <Icon as={MapPin} boxSize={4} color="blue.600" />
           <Text fontSize="sm" color="gray.600">{location}</Text>
@@ -514,7 +516,7 @@ function PropertyCard({ image, title, location, price, rating, reviews, amenitie
             <Icon as={MessageCircle} />
           </Button>
         </Flex>
-      </Card.Body>
-    </MotionCard>
+      </Box>
+    </Box>
   );
 }
