@@ -364,6 +364,51 @@ export default function BookPage() {
           </Flex>
         </Container>
       </Box>
+
+      {/* Footer */}
+      <Box bg="gray.900" color="white" py={12}>
+        <Container maxW="7xl">
+          <Grid templateColumns={{ base: "1fr", md: "repeat(4, 1fr)" }} gap={8}>
+            <Box>
+              <HStack gap={2} mb={4}>
+                <Icon as={Plane} boxSize={8} color="blue.400" />
+                <Text fontSize="2xl" fontWeight="bold">Ontour Travels</Text>
+              </HStack>
+              <Text color="gray.400" fontSize="sm">
+                Your trusted partner for travel bookings.
+              </Text>
+            </Box>
+            <Box>
+              <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Quick Links</Heading>
+              <VStack align="start" gap={2}>
+                <Link href="/" color="gray.400" _hover={{ color: "white" }}>Home</Link>
+                <Link href="/shortlets" color="gray.400" _hover={{ color: "white" }}>Shortlets</Link>
+                <Link href="/tours" color="gray.400" _hover={{ color: "white" }}>Tours</Link>
+                <Link href="/about" color="gray.400" _hover={{ color: "white" }}>About</Link>
+              </VStack>
+            </Box>
+            <Box>
+              <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Support</Heading>
+              <VStack align="start" gap={2}>
+                <Link href="/contact" color="gray.400" _hover={{ color: "white" }}>Contact Us</Link>
+                <Link href="/faq" color="gray.400" _hover={{ color: "white" }}>FAQ</Link>
+                <Link href="/terms" color="gray.400" _hover={{ color: "white" }}>Terms</Link>
+                <Link href="/privacy" color="gray.400" _hover={{ color: "white" }}>Privacy</Link>
+              </VStack>
+            </Box>
+            <Box>
+              <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Contact</Heading>
+              <VStack align="start" gap={2}>
+                <Text color="gray.400" fontSize="sm">+234 812 345 6789</Text>
+                <Text color="gray.400" fontSize="sm">info@ontourtravels.com.ng</Text>
+              </VStack>
+            </Box>
+          </Grid>
+          <Box borderTop="1px" borderColor="gray.800" pt={8} mt={8} textAlign="center" color="gray.400">
+            <Text fontSize="sm">&copy; 2024 Ontour Travels. All rights reserved. Made with <Text as="span" color="red.500">💓</Text> by <Link href="https://github.com/peldevon" target="_blank" rel="noopener noreferrer" _hover={{ color: "blue.400" }}>Peldevon</Link></Text>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 }

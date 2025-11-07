@@ -605,7 +605,7 @@ export default function Home() {
           </Grid>
 
           <Box borderTop="1px" borderColor="gray.800" pt={8} textAlign="center" color="gray.400">
-            <Text>&copy; 2024 Ontour Travels. All rights reserved. Powered by Amadeus</Text>
+            <Text>&copy; 2024 Ontour Travels. All rights reserved. Made with <Text as="span" color="red.500">💓</Text> by <Link href="https://github.com/peldevon" target="_blank" rel="noopener noreferrer" _hover={{ color: "blue.400" }}>Peldevon</Link></Text>
           </Box>
         </Container>
       </Box>

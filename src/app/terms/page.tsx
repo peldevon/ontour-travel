@@ -7,6 +7,9 @@ import {
   Text,
   VStack,
   Link,
+  Grid,
+  HStack,
+  Icon,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
@@ -279,6 +282,46 @@ export default function TermsPage() {
           </Box>
         </VStack>
       </Container>
+
+      {/* Footer */}
+      <Box bg="gray.900" color="white" py={12}>
+        <Container maxW="7xl">
+          <Grid templateColumns={{ base: "1fr", md: "repeat(4, 1fr)" }} gap={8}>
+            <Box>
+              <HStack gap={2} mb={4}>
+                <Icon as={Plane} boxSize={8} color="blue.400" />
+                <Text fontSize="2xl" fontWeight="bold">Ontour Travels</Text>
+              </HStack>
+              <Text color="gray.400" fontSize="sm">
+                Your trusted travel partner.
+              </Text>
+            </Box>
+            <Box>
+              <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Quick Links</Heading>
+              <VStack align="start" gap={2}>
+                <Link href="/" color="gray.400" _hover={{ color: "white" }}>Home</Link>
+                <Link href="/book" color="gray.400" _hover={{ color: "white" }}>Book</Link>
+                <Link href="/tours" color="gray.400" _hover={{ color: "white" }}>Tours</Link>
+              </VStack>
+            </Box>
+            <Box>
+              <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Support</Heading>
+              <VStack align="start" gap={2}>
+                <Link href="/contact" color="gray.400" _hover={{ color: "white" }}>Contact</Link>
+                <Link href="/faq" color="gray.400" _hover={{ color: "white" }}>FAQ</Link>
+                <Link href="/privacy" color="gray.400" _hover={{ color: "white" }}>Privacy</Link>
+              </VStack>
+            </Box>
+            <Box>
+              <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Contact</Heading>
+              <Text color="gray.400" fontSize="sm">info@ontourtravels.com.ng</Text>
+            </Box>
+          </Grid>
+          <Box borderTop="1px" borderColor="gray.800" pt={8} mt={8} textAlign="center" color="gray.400">
+            <Text fontSize="sm">&copy; 2024 Ontour Travels. All rights reserved. Made with <Text as="span" color="red.500">💓</Text> by <Link href="https://github.com/peldevon" target="_blank" rel="noopener noreferrer" _hover={{ color: "blue.400" }}>Peldevon</Link></Text>
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 }

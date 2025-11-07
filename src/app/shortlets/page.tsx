@@ -383,7 +383,7 @@ export default function ShortletsPage() {
             </Box>
           </Grid>
           <Box borderTop="1px" borderColor="gray.800" pt={8} mt={8} textAlign="center" color="gray.400">
-            <Text fontSize="sm">&copy; 2024 Ontour Travels. All rights reserved.</Text>
+            <Text fontSize="sm">&copy; 2024 Ontour Travels. All rights reserved. Made with <Text as="span" color="red.500">💓</Text> by <Link href="https://github.com/peldevon" target="_blank" rel="noopener noreferrer" _hover={{ color: "blue.400" }}>Peldevon</Link></Text>
           </Box>
         </Container>
       </Box>
@@ -424,84 +424,89 @@ function TrustCard({ icon, title, description }: any) {
 
 function PropertyCard({ image, title, location, price, rating, reviews, amenities }: any) {
   return (
-    <MotionCard
-      overflow="hidden"
-      cursor="pointer"
+    <MotionCardWrapper
       variants={fadeInUp}
-      whileHover={{ y: -10, boxShadow: "xl" }}
+      whileHover={{ y: -10 }}
       transition={{ duration: 0.3 }}
-      bg="white"
     >
-      <Box position="relative" h="56" overflow="hidden">
-        <Image 
-          src={image}
-          alt={title}
-          w="full"
-          h="full"
-          objectFit="cover"
-        />
-        <Box
-          position="absolute"
-          top={4}
-          right={4}
-          bg="white"
-          borderRadius="md"
-          px={3}
-          py={1}
-          boxShadow="md"
-        >
-          <HStack gap={1}>
-            <Icon as={Star} boxSize={4} fill="yellow.400" color="yellow.400" />
-            <Text fontWeight="bold" fontSize="sm">{rating}</Text>
-            <Text fontSize="xs" color="gray.600">({reviews})</Text>
-          </HStack>
-        </Box>
-      </Box>
-      <Card.Body p={5}>
-        <HStack gap={2} mb={2}>
-          <Icon as={MapPin} boxSize={4} color="blue.600" />
-          <Text fontSize="sm" color="gray.600">{location}</Text>
-        </HStack>
-        <Heading as="h3" fontSize="lg" fontWeight="bold" mb={3} color="gray.900">
-          {title}
-        </Heading>
-        <HStack gap={2} mb={4} flexWrap="wrap">
-          {amenities.map((amenity: string) => (
-            <Box
-              key={amenity}
-              px={2}
-              py={1}
-              bg="blue.50"
-              color="blue.700"
-              borderRadius="md"
-              fontSize="xs"
-              fontWeight="medium"
-            >
-              {amenity}
-            </Box>
-          ))}
-        </HStack>
-        <Flex justify="space-between" align="center" mb={4}>
-          <Box>
-            <Text fontSize="2xl" fontWeight="bold" color="blue.600">{price}</Text>
-            <Text fontSize="xs" color="gray.500">per night</Text>
-          </Box>
-        </Flex>
-        <Flex gap={2}>
-          <Button colorPalette="blue" flex={1}>
-            View Details
-          </Button>
-          <Button
-            as="a"
-            href={`https://wa.me/2348123456789?text=Hi%20Ontour,%20I'm%20interested%20in%20${encodeURIComponent(title)}`}
-            target="_blank"
-            variant="outline"
-            colorPalette="green"
+      <Card.Root
+        overflow="hidden"
+        cursor="pointer"
+        bg="white"
+        boxShadow="md"
+        _hover={{ boxShadow: "xl" }}
+      >
+        <Box position="relative" h="56" overflow="hidden">
+          <Image 
+            src={image}
+            alt={title}
+            w="full"
+            h="full"
+            objectFit="cover"
+          />
+          <Box
+            position="absolute"
+            top={4}
+            right={4}
+            bg="white"
+            borderRadius="md"
+            px={3}
+            py={1}
+            boxShadow="md"
           >
-            <Icon as={MessageCircle} />
-          </Button>
-        </Flex>
-      </Card.Body>
-    </MotionCard>
+            <HStack gap={1}>
+              <Icon as={Star} boxSize={4} fill="yellow.400" color="yellow.400" />
+              <Text fontWeight="bold" fontSize="sm">{rating}</Text>
+              <Text fontSize="xs" color="gray.600">({reviews})</Text>
+            </HStack>
+          </Box>
+        </Box>
+        <Card.Body p={5}>
+          <HStack gap={2} mb={2}>
+            <Icon as={MapPin} boxSize={4} color="blue.600" />
+            <Text fontSize="sm" color="gray.600">{location}</Text>
+          </HStack>
+          <Heading as="h3" fontSize="lg" fontWeight="bold" mb={3} color="gray.900">
+            {title}
+          </Heading>
+          <HStack gap={2} mb={4} flexWrap="wrap">
+            {amenities.map((amenity: string) => (
+              <Box
+                key={amenity}
+                px={2}
+                py={1}
+                bg="blue.50"
+                color="blue.700"
+                borderRadius="md"
+                fontSize="xs"
+                fontWeight="medium"
+              >
+                {amenity}
+              </Box>
+            ))}
+          </HStack>
+          <Flex justify="space-between" align="center" mb={4}>
+            <Box>
+              <Text fontSize="2xl" fontWeight="bold" color="blue.600">{price}</Text>
+              <Text fontSize="xs" color="gray.500">per night</Text>
+            </Box>
+          </Flex>
+          <Flex gap={2}>
+            <Button colorPalette="blue" flex={1}>
+              View Details
+            </Button>
+            <Button
+              as="a"
+              href={`https://wa.me/2348123456789?text=Hi%20Ontour,%20I'm%20interested%20in%20${encodeURIComponent(title)}`}
+              target="_blank"
+              variant="outline"
+              colorPalette="green"
+            >
+              <Icon as={MessageCircle} />
+            </Button>
+          </Flex>
+        </Card.Body>
+      </Card.Root>
+    </MotionCardWrapper>
   );
 }
