@@ -13,6 +13,7 @@ import {
   VStack,
   Icon,
   Link,
+  Image,
 } from "@chakra-ui/react";
 import {
   Plane,
@@ -65,7 +66,7 @@ export default function CMSLayout({ children }: CMSLayoutProps) {
   }
 
   return (
-    <Box minH="100vh" bg="gray.50">
+    <Box minH="100vh" bg="#FAFAFA">
       {/* Sidebar */}
       <Box
         position="fixed"
@@ -73,7 +74,7 @@ export default function CMSLayout({ children }: CMSLayoutProps) {
         top={0}
         bottom={0}
         w={sidebarOpen ? "260px" : "80px"}
-        bg="gray.900"
+        bg="#152852"
         color="white"
         transition="width 0.3s"
         zIndex={40}
@@ -83,19 +84,31 @@ export default function CMSLayout({ children }: CMSLayoutProps) {
           <Flex justify="space-between" align="center" mb={8}>
             {sidebarOpen ? (
               <HStack gap={2}>
-                <Icon as={Plane} boxSize={6} color="blue.400" />
-                <Text fontSize="lg" fontWeight="bold">
-                  OnTour CMS
-                </Text>
+                <Image 
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
+                  alt="Ontour Travels Logo"
+                  h="40px"
+                  w="auto"
+                  objectFit="contain"
+                />
               </HStack>
             ) : (
-              <Icon as={Plane} boxSize={6} color="blue.400" mx="auto" />
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
+                alt="Ontour Travels Logo"
+                h="30px"
+                w="auto"
+                objectFit="contain"
+                mx="auto"
+              />
             )}
             <Button
               size="sm"
               variant="ghost"
               onClick={() => setSidebarOpen(!sidebarOpen)}
               display={{ base: "none", md: "flex" }}
+              color="white"
+              _hover={{ bg: "#0d1a35" }}
             >
               {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
@@ -116,8 +129,9 @@ export default function CMSLayout({ children }: CMSLayoutProps) {
                     px={4}
                     py={3}
                     borderRadius="md"
-                    bg={isActive ? "blue.600" : "transparent"}
-                    _hover={{ bg: isActive ? "blue.700" : "gray.800" }}
+                    bg={isActive ? "#C9A449" : "transparent"}
+                    color={isActive ? "#2C2C2C" : "white"}
+                    _hover={{ bg: isActive ? "#C9A449" : "#0d1a35" }}
                     cursor="pointer"
                     transition="all 0.2s"
                   >
@@ -135,21 +149,22 @@ export default function CMSLayout({ children }: CMSLayoutProps) {
         </Box>
 
         {/* User info at bottom */}
-        <Box position="absolute" bottom={0} left={0} right={0} p={4} borderTop="1px" borderColor="gray.800">
+        <Box position="absolute" bottom={0} left={0} right={0} p={4} borderTop="1px" borderColor="rgba(255,255,255,0.1)">
           {sidebarOpen ? (
             <VStack align="stretch" gap={2}>
-              <Text fontSize="sm" fontWeight="medium">
+              <Text fontSize="sm" fontWeight="medium" color="white">
                 {user.fullName}
               </Text>
-              <Text fontSize="xs" color="gray.400">
+              <Text fontSize="xs" color="#E5E5E5">
                 {user.email}
               </Text>
               <Button
                 size="sm"
                 variant="ghost"
-                colorScheme="red"
                 onClick={handleLogout}
                 justifyContent="flex-start"
+                color="white"
+                _hover={{ bg: "#0d1a35", color: "#C9A449" }}
               >
                 <Icon as={LogOut} boxSize={4} mr={2} />
                 Logout
@@ -159,9 +174,10 @@ export default function CMSLayout({ children }: CMSLayoutProps) {
             <Button
               size="sm"
               variant="ghost"
-              colorScheme="red"
               onClick={handleLogout}
               w="full"
+              color="white"
+              _hover={{ bg: "#0d1a35", color: "#C9A449" }}
             >
               <Icon as={LogOut} boxSize={5} />
             </Button>
@@ -171,13 +187,13 @@ export default function CMSLayout({ children }: CMSLayoutProps) {
 
       {/* Main Content */}
       <Box ml={sidebarOpen ? "260px" : "80px"} transition="margin 0.3s">
-        <Box bg="white" borderBottom="1px" borderColor="gray.200" px={6} py={4}>
+        <Box bg="white" borderBottom="1px" borderColor="#E5E5E5" px={6} py={4}>
           <Flex justify="space-between" align="center">
-            <Heading fontSize="xl" fontWeight="bold" color="gray.900">
+            <Heading fontSize="xl" fontWeight="bold" color="#2C2C2C">
               {menuItems.find((item) => item.href === pathname)?.label || "Dashboard"}
             </Heading>
             <Link href="/" target="_blank">
-              <Button size="sm" variant="outline">
+              <Button size="sm" variant="outline" borderColor="#152852" color="#152852" _hover={{ bg: "#152852", color: "white" }}>
                 View Website
               </Button>
             </Link>

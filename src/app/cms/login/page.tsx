@@ -12,6 +12,8 @@ import {
   Input,
   VStack,
   Icon,
+  Image,
+  HStack,
 } from "@chakra-ui/react";
 import { Plane, Lock, Mail } from "lucide-react";
 import { toast, Toaster } from "sonner";
@@ -61,16 +63,22 @@ export default function CMSLogin() {
   return (
     <>
       <Toaster position="top-right" />
-      <Box minH="100vh" bg="gray.50" display="flex" alignItems="center" justifyContent="center">
+      <Box minH="100vh" bg="#FAFAFA" display="flex" alignItems="center" justifyContent="center">
         <Container maxW="md">
           <Box bg="white" borderRadius="xl" boxShadow="lg" p={8}>
             <Flex direction="column" align="center" mb={8}>
-              <Flex align="center" gap={2} mb={4}>
-                <Icon as={Plane} boxSize={10} color="blue.600" />
-                <Heading fontSize="2xl" fontWeight="bold" color="gray.900">
-                  Ontour Travels CMS
-                </Heading>
-              </Flex>
+              <HStack gap={2} mb={4}>
+                <Image 
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
+                  alt="Ontour Travels Logo"
+                  h="60px"
+                  w="auto"
+                  objectFit="contain"
+                />
+              </HStack>
+              <Heading fontSize="2xl" fontWeight="bold" color="#2C2C2C" mb={2}>
+                Ontour Travels CMS
+              </Heading>
               <Text color="gray.600" textAlign="center">
                 Sign in to manage your website content
               </Text>
@@ -79,7 +87,7 @@ export default function CMSLogin() {
             <form onSubmit={handleLogin}>
               <VStack gap={4} align="stretch">
                 <Box>
-                  <Text fontSize="sm" fontWeight="medium" mb={2} color="gray.700">
+                  <Text fontSize="sm" fontWeight="medium" mb={2} color="#2C2C2C">
                     Email Address
                   </Text>
                   <Box position="relative">
@@ -100,12 +108,14 @@ export default function CMSLogin() {
                       required
                       pl={10}
                       size="lg"
+                      borderColor="#E5E5E5"
+                      _focus={{ borderColor: "#152852", boxShadow: "0 0 0 1px #152852" }}
                     />
                   </Box>
                 </Box>
 
                 <Box>
-                  <Text fontSize="sm" fontWeight="medium" mb={2} color="gray.700">
+                  <Text fontSize="sm" fontWeight="medium" mb={2} color="#2C2C2C">
                     Password
                   </Text>
                   <Box position="relative">
@@ -126,13 +136,17 @@ export default function CMSLogin() {
                       required
                       pl={10}
                       size="lg"
+                      borderColor="#E5E5E5"
+                      _focus={{ borderColor: "#152852", boxShadow: "0 0 0 1px #152852" }}
                     />
                   </Box>
                 </Box>
 
                 <Button
                   type="submit"
-                  colorPalette="blue"
+                  bg="#152852"
+                  color="white"
+                  _hover={{ bg: "#0d1a35" }}
                   size="lg"
                   w="full"
                   loading={loading}
@@ -141,19 +155,19 @@ export default function CMSLogin() {
                 </Button>
 
                 <Box
-                  bg="blue.50"
+                  bg="#f0f0f0"
                   borderRadius="md"
                   p={4}
                   border="1px solid"
-                  borderColor="blue.200"
+                  borderColor="#E5E5E5"
                 >
-                  <Text fontSize="sm" fontWeight="medium" color="blue.900" mb={1}>
+                  <Text fontSize="sm" fontWeight="medium" color="#152852" mb={1}>
                     Default Login Credentials:
                   </Text>
-                  <Text fontSize="xs" color="blue.700">
+                  <Text fontSize="xs" color="#2C2C2C">
                     Email: admin@ontourtravels.com.ng
                   </Text>
-                  <Text fontSize="xs" color="blue.700">
+                  <Text fontSize="xs" color="#2C2C2C">
                     Password: admin123
                   </Text>
                 </Box>

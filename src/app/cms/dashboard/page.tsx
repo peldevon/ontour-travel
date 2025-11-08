@@ -59,29 +59,29 @@ export default function CMSDashboard() {
       label: "Pages",
       value: stats.pages,
       icon: FileText,
-      color: "blue",
-      bg: "blue.50",
+      color: "#152852",
+      bg: "#f0f0f0",
     },
     {
       label: "Shortlets",
       value: stats.shortlets,
       icon: Building,
-      color: "green",
-      bg: "green.50",
+      color: "#C9A449",
+      bg: "#f0f0f0",
     },
     {
       label: "Tours",
       value: stats.tours,
       icon: Map,
-      color: "purple",
-      bg: "purple.50",
+      color: "#152852",
+      bg: "#f0f0f0",
     },
     {
       label: "Users",
       value: stats.users,
       icon: Users,
-      color: "orange",
-      bg: "orange.50",
+      color: "#C9A449",
+      bg: "#f0f0f0",
     },
   ];
 
@@ -89,7 +89,7 @@ export default function CMSDashboard() {
     <CMSLayout>
       <VStack align="stretch" gap={6}>
         <Box>
-          <Heading fontSize="2xl" fontWeight="bold" mb={2}>
+          <Heading fontSize="2xl" fontWeight="bold" mb={2} color="#2C2C2C">
             Welcome to Ontour Travels CMS
           </Heading>
           <Text color="gray.600">
@@ -103,19 +103,19 @@ export default function CMSDashboard() {
               <Card.Body>
                 <Flex justify="space-between" align="start">
                   <VStack align="start" gap={2}>
-                    <Text fontSize="sm" color="gray.700" fontWeight="medium">
+                    <Text fontSize="sm" color="#2C2C2C" fontWeight="medium">
                       {stat.label}
                     </Text>
-                    <Heading fontSize="3xl" fontWeight="bold" color={`${stat.color}.700`}>
+                    <Heading fontSize="3xl" fontWeight="bold" color={stat.color}>
                       {loading ? "..." : stat.value}
                     </Heading>
                   </VStack>
                   <Box
-                    bg={`${stat.color}.100`}
+                    bg="white"
                     p={3}
                     borderRadius="lg"
                   >
-                    <Icon as={stat.icon} boxSize={6} color={`${stat.color}.600`} />
+                    <Icon as={stat.icon} boxSize={6} color={stat.color} />
                   </Box>
                 </Flex>
               </Card.Body>
@@ -125,7 +125,7 @@ export default function CMSDashboard() {
 
         <Card.Root>
           <Card.Body p={6}>
-            <Heading fontSize="lg" mb={4}>
+            <Heading fontSize="lg" mb={4} color="#2C2C2C">
               Quick Links
             </Heading>
             <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={4}>
@@ -135,12 +135,12 @@ export default function CMSDashboard() {
                 p={4}
                 borderRadius="md"
                 border="1px"
-                borderColor="gray.200"
-                _hover={{ borderColor: "blue.500", bg: "blue.50" }}
+                borderColor="#E5E5E5"
+                _hover={{ borderColor: "#152852", bg: "#f0f0f0" }}
                 transition="all 0.2s"
               >
-                <Icon as={FileText} boxSize={6} color="blue.600" mb={2} />
-                <Text fontWeight="medium">Manage Pages</Text>
+                <Icon as={FileText} boxSize={6} color="#152852" mb={2} />
+                <Text fontWeight="medium" color="#2C2C2C">Manage Pages</Text>
                 <Text fontSize="sm" color="gray.600">
                   Edit website content
                 </Text>
@@ -152,12 +152,12 @@ export default function CMSDashboard() {
                 p={4}
                 borderRadius="md"
                 border="1px"
-                borderColor="gray.200"
-                _hover={{ borderColor: "green.500", bg: "green.50" }}
+                borderColor="#E5E5E5"
+                _hover={{ borderColor: "#C9A449", bg: "#f0f0f0" }}
                 transition="all 0.2s"
               >
-                <Icon as={Building} boxSize={6} color="green.600" mb={2} />
-                <Text fontWeight="medium">Manage Shortlets</Text>
+                <Icon as={Building} boxSize={6} color="#C9A449" mb={2} />
+                <Text fontWeight="medium" color="#2C2C2C">Manage Shortlets</Text>
                 <Text fontSize="sm" color="gray.600">
                   Add or edit properties
                 </Text>
@@ -169,12 +169,12 @@ export default function CMSDashboard() {
                 p={4}
                 borderRadius="md"
                 border="1px"
-                borderColor="gray.200"
-                _hover={{ borderColor: "purple.500", bg: "purple.50" }}
+                borderColor="#E5E5E5"
+                _hover={{ borderColor: "#152852", bg: "#f0f0f0" }}
                 transition="all 0.2s"
               >
-                <Icon as={Map} boxSize={6} color="purple.600" mb={2} />
-                <Text fontWeight="medium">Manage Tours</Text>
+                <Icon as={Map} boxSize={6} color="#152852" mb={2} />
+                <Text fontWeight="medium" color="#2C2C2C">Manage Tours</Text>
                 <Text fontSize="sm" color="gray.600">
                   Update tour packages
                 </Text>
