@@ -111,7 +111,7 @@ export default function Home() {
               <Image 
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
                 alt="Ontour Travels Logo"
-                h="50px"
+                h="60px"
                 w="auto"
                 objectFit="contain"
               />

@@ -33,6 +33,8 @@ import {
   Home,
   Map,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const MotionBox = motion.create(Box);
 const MotionCard = motion.create(Card.Root);
@@ -66,7 +68,50 @@ const scaleIn = {
   }
 };
 
+interface Tour {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  tags: string[];
+  duration_days: number;
+  duration_nights: number;
+  price_from_ngn: number;
+  price_from_usd: number;
+  short_description: string;
+  highlights: string[];
+  gallery: string[];
+  seasonality: string;
+  status: string;
+}
+
 export default function ToursPage() {
+  const router = useRouter();
+  const [tours, setTours] = useState<Tour[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
+
+  useEffect(() => {
+    const fetchTours = async () => {
+      try {
+        const response = await fetch("/api/tours");
+        if (response.ok) {
+          const data = await response.json();
+          setTours(data.tours || []);
+        }
+      } catch (error) {
+        console.error("Error fetching tours:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTours();
+  }, []);
+
+  const filteredTours = activeCategory === "all" 
+    ? tours 
+    : tours.filter(t => t.category === activeCategory);
+
   return (
     <Box minH="100vh" bg="gray.50">
       {/* Header */}
@@ -80,18 +125,21 @@ export default function ToursPage() {
         <Container maxW="7xl" py={4}>
           <Flex justify="space-between" align="center">
             <HStack gap={2} as="a" href="/">
-              <Icon as={Plane} boxSize={8} color="blue.600" />
-              <Text fontSize="2xl" fontWeight="bold" color="gray.900">
-                Ontour Travels
-              </Text>
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
+                alt="Ontour Travels Logo"
+                h="60px"
+                w="auto"
+                objectFit="contain"
+              />
             </HStack>
             <HStack gap={6} display={{ base: "none", md: "flex" }}>
-              <Link href="/" color="gray.700">Home</Link>
-              <Link href="/book" color="gray.700">Flights & Hotels</Link>
-              <Link href="/shortlets" color="gray.700">Shortlets</Link>
-              <Link href="/about" color="gray.700">About</Link>
-              <Link href="/contact" color="gray.700">Contact</Link>
-              <Button colorPalette="blue" size="sm" as="a" href="https://wa.me/2348123456789" target="_blank">
+              <Link href="/" color="#2C2C2C" _hover={{ color: "#152852" }}>Home</Link>
+              <Link href="/book" color="#2C2C2C" _hover={{ color: "#152852" }}>Flights & Hotels</Link>
+              <Link href="/shortlets" color="#2C2C2C" _hover={{ color: "#152852" }}>Shortlets</Link>
+              <Link href="/about" color="#2C2C2C" _hover={{ color: "#152852" }}>About</Link>
+              <Link href="/contact" color="#2C2C2C" _hover={{ color: "#152852" }}>Contact</Link>
+              <Button bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} size="sm" as="a" href="https://wa.me/2348123456789" target="_blank">
                 <Icon as={MessageCircle} mr={1} />
                 WhatsApp
               </Button>
@@ -102,10 +150,7 @@ export default function ToursPage() {
 
       {/* Hero Section */}
       <MotionBox
-        bg="gradient-to-r"
-        bgGradient="to-r"
-        gradientFrom="blue.600"
-        gradientTo="blue.800"
+        bg="#152852"
         color="white"
         py={20}
         initial={{ opacity: 0 }}
@@ -121,14 +166,14 @@ export default function ToursPage() {
             <Heading as="h1" fontSize={{ base: "4xl", md: "5xl" }} fontWeight="bold" mb={4}>
               Curated Tours & Experiences
             </Heading>
-            <Text fontSize="xl" color="blue.100" mb={8}>
+            <Text fontSize="xl" color="#FAFAFA" mb={8}>
               From weekend escapes to international adventures—tailored for you
             </Text>
             <HStack gap={4} justify="center">
-              <Button colorPalette="blue" bg="white" color="blue.600" size="lg" _hover={{ bg: "gray.100" }}>
+              <Button bg="white" color="#152852" _hover={{ bg: "gray.100" }} size="lg" onClick={() => document.getElementById('tours-grid')?.scrollIntoView({ behavior: 'smooth' })}>
                 View Packages
               </Button>
-              <Button variant="outline" borderColor="white" color="white" size="lg" _hover={{ bg: "whiteAlpha.200" }}>
+              <Button variant="outline" borderColor="white" color="white" size="lg" _hover={{ bg: "whiteAlpha.200" }} as="a" href="https://wa.me/2348123456789?text=Hi%20Ontour,%20I'd%20like%20to%20plan%20a%20custom%20trip" target="_blank">
                 Plan Custom Trip
               </Button>
             </HStack>
@@ -144,7 +189,7 @@ export default function ToursPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Tabs.Root defaultValue="all">
+            <Tabs.Root value={activeCategory} onValueChange={(e) => setActiveCategory(e.value)}>
               <Tabs.List>
                 <Tabs.Trigger value="all" fontWeight="medium">
                   All Tours
@@ -168,106 +213,33 @@ export default function ToursPage() {
       </Box>
 
       {/* Tours Grid */}
-      <Container maxW="7xl" py={16}>
-        <MotionBox
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={8}>
-            {/* International Tours */}
-            <TourCard
-              image="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80"
-              title="Weekend in Dubai"
-              duration="4D/3N"
-              category="International"
-              priceFrom="₦850,000"
-              highlights={["Burj Khalifa tour", "Desert safari", "Dhow cruise"]}
-              seasonality="Best: Oct–Mar"
-            />
-            <TourCard
-              image="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80"
-              title="London City Sampler"
-              duration="6D/5N"
-              category="International"
-              priceFrom="₦1,200,000"
-              highlights={["Palace tour", "Thames cruise", "Shopping at Harrods"]}
-              seasonality="Best: May–Sep"
-            />
-            <TourCard
-              image="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80"
-              title="Bali Relax"
-              duration="7D/6N"
-              category="International"
-              priceFrom="₦980,000"
-              highlights={["Temple visits", "Beach relaxation", "Balinese spa"]}
-              seasonality="Best: Apr–Oct"
-            />
-
-            {/* Regional Tours */}
-            <TourCard
-              image="https://images.unsplash.com/photo-1565552645632-d725f8bfc19d?w=600&q=80"
-              title="Zanzibar Escape"
-              duration="5D/4N"
-              category="Regional"
-              priceFrom="₦650,000"
-              highlights={["Stone Town tour", "Spice farm", "Beach resort stay"]}
-              seasonality="Best: Jun–Oct"
-            />
-            <TourCard
-              image="https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?w=600&q=80"
-              title="Cape Town Experience"
-              duration="5D/4N"
-              category="Regional"
-              priceFrom="₦720,000"
-              highlights={["Table Mountain", "Wine tasting", "Robben Island"]}
-              seasonality="Best: Nov–Mar"
-            />
-            <TourCard
-              image="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80"
-              title="Kenya Safari"
-              duration="6D/5N"
-              category="Regional"
-              priceFrom="₦890,000"
-              highlights={["Maasai Mara", "Big Five safari", "Cultural village"]}
-              seasonality="Best: Jul–Oct"
-            />
-
-            {/* Local Tours */}
-            <TourCard
-              image="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80"
-              title="Obudu Cattle Ranch"
-              duration="3D/2N"
-              category="Local"
-              priceFrom="₦180,000"
-              highlights={["Cable car ride", "Hiking trails", "Mountain resort"]}
-              seasonality="Best: Nov–Feb"
-            />
-            <TourCard
-              image="https://images.unsplash.com/photo-1611424274340-f10cd3f6e18e?w=600&q=80"
-              title="Abuja City Break"
-              duration="3D/2N"
-              category="Local"
-              priceFrom="₦150,000"
-              highlights={["Aso Rock", "Millennium Park", "Arts & Crafts village"]}
-              seasonality="Year-round"
-            />
-            <TourCard
-              image="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=600&q=80"
-              title="Calabar Carnival"
-              duration="4D/3N"
-              category="Local"
-              priceFrom="₦220,000"
-              highlights={["Carnival parade", "Cultural shows", "Beach resort"]}
-              seasonality="Best: Dec"
-            />
-          </Grid>
-        </MotionBox>
+      <Container maxW="7xl" py={16} id="tours-grid">
+        {loading ? (
+          <Text textAlign="center" fontSize="xl" color="gray.600">
+            Loading tours...
+          </Text>
+        ) : filteredTours.length === 0 ? (
+          <Text textAlign="center" fontSize="xl" color="gray.600">
+            No tours available in this category.
+          </Text>
+        ) : (
+          <MotionBox
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={8}>
+              {filteredTours.map((tour) => (
+                <TourCard key={tour.id} tour={tour} router={router} />
+              ))}
+            </Grid>
+          </MotionBox>
+        )}
       </Container>
 
       {/* Custom Trip Planner */}
-      <Box bg="blue.600" color="white" py={20}>
+      <Box bg="#152852" color="white" py={20}>
         <Container maxW="4xl">
           <MotionBox
             textAlign="center"
@@ -279,7 +251,7 @@ export default function ToursPage() {
             <Heading as="h2" fontSize="3xl" mb={4}>
               Don't See What You're Looking For?
             </Heading>
-            <Text fontSize="lg" color="blue.100" mb={8}>
+            <Text fontSize="lg" color="#FAFAFA" mb={8}>
               Tell us your dream destination and we'll create a custom itinerary just for you
             </Text>
             <HStack gap={4} justify="center" flexWrap="wrap">
@@ -287,7 +259,9 @@ export default function ToursPage() {
                 as="a"
                 href="https://wa.me/2348123456789?text=Hi%20Ontour,%20I'd%20like%20to%20plan%20a%20custom%20trip"
                 target="_blank"
-                colorPalette="green"
+                bg="#25D366"
+                color="white"
+                _hover={{ bg: "#1da851" }}
                 size="lg"
                 leftIcon={<MessageCircle />}
               >
@@ -407,47 +381,52 @@ export default function ToursPage() {
       </Box>
 
       {/* Footer */}
-      <Box bg="gray.900" color="white" py={12}>
+      <Box bg="#2C2C2C" color="white" py={12}>
         <Container maxW="7xl">
           <Grid templateColumns={{ base: "1fr", md: "repeat(4, 1fr)" }} gap={8}>
             <Box>
               <HStack gap={2} mb={4}>
-                <Icon as={Plane} boxSize={8} color="blue.400" />
-                <Text fontSize="2xl" fontWeight="bold">Ontour Travels</Text>
+                <Image 
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
+                  alt="Ontour Travels Logo"
+                  h="40px"
+                  w="auto"
+                  objectFit="contain"
+                />
               </HStack>
-              <Text color="gray.400" fontSize="sm">
+              <Text color="#E5E5E5" fontSize="sm">
                 Creating unforgettable travel experiences for Nigerian travelers.
               </Text>
             </Box>
             <Box>
               <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Quick Links</Heading>
               <VStack align="start" gap={2}>
-                <Link href="/" color="gray.400" _hover={{ color: "white" }}>Home</Link>
-                <Link href="/book" color="gray.400" _hover={{ color: "white" }}>Flights & Hotels</Link>
-                <Link href="/shortlets" color="gray.400" _hover={{ color: "white" }}>Shortlets</Link>
-                <Link href="/about" color="gray.400" _hover={{ color: "white" }}>About</Link>
+                <Link href="/" color="#E5E5E5" _hover={{ color: "white" }}>Home</Link>
+                <Link href="/book" color="#E5E5E5" _hover={{ color: "white" }}>Flights & Hotels</Link>
+                <Link href="/shortlets" color="#E5E5E5" _hover={{ color: "white" }}>Shortlets</Link>
+                <Link href="/about" color="#E5E5E5" _hover={{ color: "white" }}>About</Link>
               </VStack>
             </Box>
             <Box>
               <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Support</Heading>
               <VStack align="start" gap={2}>
-                <Link href="/contact" color="gray.400" _hover={{ color: "white" }}>Contact Us</Link>
-                <Link href="#" color="gray.400" _hover={{ color: "white" }}>FAQ</Link>
-                <Link href="#" color="gray.400" _hover={{ color: "white" }}>Terms & Conditions</Link>
-                <Link href="#" color="gray.400" _hover={{ color: "white" }}>Privacy Policy</Link>
+                <Link href="/contact" color="#E5E5E5" _hover={{ color: "white" }}>Contact Us</Link>
+                <Link href="/faq" color="#E5E5E5" _hover={{ color: "white" }}>FAQ</Link>
+                <Link href="/terms" color="#E5E5E5" _hover={{ color: "white" }}>Terms & Conditions</Link>
+                <Link href="/privacy" color="#E5E5E5" _hover={{ color: "white" }}>Privacy Policy</Link>
               </VStack>
             </Box>
             <Box>
               <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Contact</Heading>
               <VStack align="start" gap={2}>
-                <Text color="gray.400" fontSize="sm">+234 812 345 6789</Text>
-                <Text color="gray.400" fontSize="sm">info@ontourtravels.com.ng</Text>
-                <Text color="gray.400" fontSize="sm">Mon–Sat, 9 AM – 6 PM WAT</Text>
+                <Text color="#E5E5E5" fontSize="sm">+234 812 345 6789</Text>
+                <Text color="#E5E5E5" fontSize="sm">info@ontourtravels.com.ng</Text>
+                <Text color="#E5E5E5" fontSize="sm">Mon–Sat, 9 AM – 6 PM WAT</Text>
               </VStack>
             </Box>
           </Grid>
-          <Box borderTop="1px" borderColor="gray.800" pt={8} mt={8} textAlign="center" color="gray.400">
-            <Text fontSize="sm">&copy; 2024 Ontour Travels. All rights reserved. Made with <Text as="span" color="red.500">💓</Text> by <Link href="https://github.com/peldevon" target="_blank" rel="noopener noreferrer" _hover={{ color: "blue.400" }}>Peldevon</Link></Text>
+          <Box borderTop="1px" borderColor="gray.800" pt={8} mt={8} textAlign="center" color="#E5E5E5">
+            <Text fontSize="sm">&copy; 2024 Ontour Travels. All rights reserved. Made with <Text as="span" color="red.500">💓</Text> by <Link href="https://github.com/peldevon" target="_blank" rel="noopener noreferrer" _hover={{ color: "#C9A449" }}>Peldevon</Link></Text>
           </Box>
         </Container>
       </Box>
@@ -455,11 +434,15 @@ export default function ToursPage() {
   );
 }
 
-function TourCard({ image, title, duration, category, priceFrom, highlights, seasonality }: any) {
+function TourCard({ tour, router }: { tour: Tour; router: any }) {
   const categoryColors: any = {
-    "International": "purple",
-    "Regional": "green",
-    "Local": "blue"
+    "international": "purple",
+    "regional": "green",
+    "local": "blue"
+  };
+
+  const handleViewDetails = () => {
+    router.push(`/tours/${tour.slug}`);
   };
 
   return (
@@ -473,32 +456,32 @@ function TourCard({ image, title, duration, category, priceFrom, highlights, sea
     >
       <Box position="relative" h="64" overflow="hidden">
         <Image 
-          src={image}
-          alt={title}
+          src={tour.gallery[0]}
+          alt={tour.title}
           w="full"
           h="full"
           objectFit="cover"
         />
-        <Box position="absolute" top={4} right={4} px={3} py={1} bg={`${categoryColors[category]}.600`} color="white" borderRadius="md" fontSize="sm" fontWeight="medium">
-          {category}
+        <Box position="absolute" top={4} right={4} px={3} py={1} bg={`${categoryColors[tour.category]}.600`} color="white" borderRadius="md" fontSize="sm" fontWeight="medium">
+          {tour.category.toUpperCase()}
         </Box>
       </Box>
       <Card.Body p={6}>
-        <Heading as="h3" fontSize="xl" fontWeight="bold" mb={2} color="gray.900">
-          {title}
+        <Heading as="h3" fontSize="xl" fontWeight="bold" mb={2} color="#2C2C2C">
+          {tour.title}
         </Heading>
         <HStack gap={4} mb={4}>
           <HStack gap={1}>
             <Icon as={Clock} boxSize={4} color="gray.500" />
-            <Text fontSize="sm" color="gray.600">{duration}</Text>
+            <Text fontSize="sm" color="gray.600">{tour.duration_days}D/{tour.duration_nights}N</Text>
           </HStack>
           <HStack gap={1}>
             <Icon as={Calendar} boxSize={4} color="gray.500" />
-            <Text fontSize="sm" color="gray.600">{seasonality}</Text>
+            <Text fontSize="sm" color="gray.600">{tour.seasonality.includes(':') ? tour.seasonality.split(':')[1].trim() : tour.seasonality}</Text>
           </HStack>
         </HStack>
         <VStack align="start" gap={2} mb={4}>
-          {highlights.map((highlight: string) => (
+          {tour.highlights.slice(0, 3).map((highlight: string) => (
             <HStack key={highlight} gap={2}>
               <Icon as={CheckCircle} boxSize={4} color="green.500" />
               <Text fontSize="sm" color="gray.700">{highlight}</Text>
@@ -509,16 +492,16 @@ function TourCard({ image, title, duration, category, priceFrom, highlights, sea
           <Flex justify="space-between" align="center" mb={4}>
             <Box>
               <Text fontSize="xs" color="gray.500">From</Text>
-              <Text fontSize="2xl" fontWeight="bold" color="blue.600">{priceFrom}</Text>
+              <Text fontSize="2xl" fontWeight="bold" color="#152852">₦{tour.price_from_ngn.toLocaleString()}</Text>
             </Box>
           </Flex>
           <Flex gap={2}>
-            <Button colorPalette="blue" flex={1}>
+            <Button bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} flex={1} onClick={handleViewDetails}>
               View Details
             </Button>
             <Button
               as="a"
-              href={`https://wa.me/2348123456789?text=Hi%20Ontour,%20I'm%20interested%20in%20the%20${encodeURIComponent(title)}%20tour`}
+              href={`https://wa.me/2348123456789?text=Hi%20Ontour,%20I'm%20interested%20in%20the%20${encodeURIComponent(tour.title)}%20tour`}
               target="_blank"
               variant="outline"
               colorPalette="green"
@@ -544,13 +527,13 @@ function FeatureCard({ icon, title, description }: any) {
         <Box
           w={16}
           h={16}
-          bg="blue.100"
+          bg="#f0f0f0"
           borderRadius="full"
           display="flex"
           alignItems="center"
           justifyContent="center"
         >
-          <Icon as={icon} boxSize={8} color="blue.600" />
+          <Icon as={icon} boxSize={8} color="#152852" />
         </Box>
         <Heading as="h3" fontSize="lg" fontWeight="bold">
           {title}
@@ -572,7 +555,7 @@ function FAQItem({ question, answer }: any) {
       borderRadius="lg"
     >
       <Card.Body>
-        <Heading as="h4" fontSize="md" fontWeight="bold" mb={2} color="gray.900">
+        <Heading as="h4" fontSize="md" fontWeight="bold" mb={2} color="#2C2C2C">
           {question}
         </Heading>
         <Text color="gray.600" fontSize="sm">
