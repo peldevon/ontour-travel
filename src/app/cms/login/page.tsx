@@ -13,8 +13,8 @@ import {
   VStack,
   Icon,
   Image,
-  HStack,
-} from "@chakra-ui/react";
+  HStack } from
+"@chakra-ui/react";
 import { Plane, Lock, Mail } from "lucide-react";
 import { toast, Toaster } from "sonner";
 
@@ -68,16 +68,16 @@ export default function CMSLogin() {
           <Box bg="white" borderRadius="xl" boxShadow="lg" p={8}>
             <Flex direction="column" align="center" mb={8}>
               <HStack gap={2} mb={4}>
-                <Image 
+                <Image
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
                   alt="Ontour Travels Logo"
                   h="60px"
                   w="auto"
-                  objectFit="contain"
-                />
+                  objectFit="contain" />
+
               </HStack>
-              <Heading fontSize="2xl" fontWeight="bold" color="#2C2C2C" mb={2}>
-                Ontour Travels CMS
+              <Heading fontSize="2xl" fontWeight="bold" color="#2C2C2C" mb={2} className="!whitespace-pre-line">CONTENT ADMIN
+
               </Heading>
               <Text color="gray.600" textAlign="center">
                 Sign in to manage your website content
@@ -98,8 +98,8 @@ export default function CMSLogin() {
                       top="50%"
                       transform="translateY(-50%)"
                       color="gray.400"
-                      boxSize={5}
-                    />
+                      boxSize={5} />
+
                     <Input
                       type="email"
                       placeholder="admin@ontourtravels.com.ng"
@@ -109,8 +109,8 @@ export default function CMSLogin() {
                       pl={10}
                       size="lg"
                       borderColor="#E5E5E5"
-                      _focus={{ borderColor: "#152852", boxShadow: "0 0 0 1px #152852" }}
-                    />
+                      _focus={{ borderColor: "#152852", boxShadow: "0 0 0 1px #152852" }} />
+
                   </Box>
                 </Box>
 
@@ -126,8 +126,8 @@ export default function CMSLogin() {
                       top="50%"
                       transform="translateY(-50%)"
                       color="gray.400"
-                      boxSize={5}
-                    />
+                      boxSize={5} />
+
                     <Input
                       type="password"
                       placeholder="••••••••"
@@ -137,8 +137,8 @@ export default function CMSLogin() {
                       pl={10}
                       size="lg"
                       borderColor="#E5E5E5"
-                      _focus={{ borderColor: "#152852", boxShadow: "0 0 0 1px #152852" }}
-                    />
+                      _focus={{ borderColor: "#152852", boxShadow: "0 0 0 1px #152852" }} />
+
                   </Box>
                 </Box>
 
@@ -149,8 +149,8 @@ export default function CMSLogin() {
                   _hover={{ bg: "#0d1a35" }}
                   size="lg"
                   w="full"
-                  loading={loading}
-                >
+                  loading={loading}>
+
                   Sign In
                 </Button>
 
@@ -159,8 +159,8 @@ export default function CMSLogin() {
                   borderRadius="md"
                   p={4}
                   border="1px solid"
-                  borderColor="#E5E5E5"
-                >
+                  borderColor="#E5E5E5">
+
                   <Text fontSize="sm" fontWeight="medium" color="#152852" mb={1}>
                     Default Login Credentials:
                   </Text>
@@ -176,6 +176,6 @@ export default function CMSLogin() {
           </Box>
         </Container>
       </Box>
-    </>
-  );
+    </>);
+
 }
