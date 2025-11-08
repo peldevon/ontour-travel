@@ -272,9 +272,9 @@ export default function CMSTours() {
                         <Select.ValueText placeholder="Select category" />
                       </Select.Trigger>
                       <Select.Content>
-                        <Select.Item value="international">International</Select.Item>
-                        <Select.Item value="regional">Regional</Select.Item>
-                        <Select.Item value="local">Local</Select.Item>
+                        <Select.Item item="international" value="international">International</Select.Item>
+                        <Select.Item item="regional" value="regional">Regional</Select.Item>
+                        <Select.Item item="local" value="local">Local</Select.Item>
                       </Select.Content>
                     </Select.Root>
                   </Box>
@@ -378,8 +378,8 @@ export default function CMSTours() {
                         <Select.ValueText placeholder="Select status" />
                       </Select.Trigger>
                       <Select.Content>
-                        <Select.Item value="active">Active</Select.Item>
-                        <Select.Item value="inactive">Inactive</Select.Item>
+                        <Select.Item item="active" value="active">Active</Select.Item>
+                        <Select.Item item="inactive" value="inactive">Inactive</Select.Item>
                       </Select.Content>
                     </Select.Root>
                   </Box>

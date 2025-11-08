@@ -258,8 +258,8 @@ export default function CMSShortlets() {
                         <Select.ValueText placeholder="Select status" />
                       </Select.Trigger>
                       <Select.Content>
-                        <Select.Item value="active">Active</Select.Item>
-                        <Select.Item value="inactive">Inactive</Select.Item>
+                        <Select.Item item="active" value="active">Active</Select.Item>
+                        <Select.Item item="inactive" value="inactive">Inactive</Select.Item>
                       </Select.Content>
                     </Select.Root>
                   </Box>
