@@ -44,12 +44,17 @@ import {
   Wind,
   Car,
   MessageCircle,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
-const MotionBox = motion.create(Box);
-const MotionFlex = motion.create(Flex);
-const MotionCard = motion.create(Card.Root);
+// Create motion components using standard pattern
+const MotionBox = motion(Box);
+const MotionCard = motion(Card.Root);
+const MotionFlex = motion(Flex);
 
 // Animation variants
 const fadeInUp = {
@@ -88,6 +93,112 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
+
+  // Shortlets carousel
+  const [shortletsEmblaRef, shortletsEmblaApi] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
+
+  // Tours carousel
+  const [toursEmblaRef, toursEmblaApi] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
+
+  const scrollPrevShortlets = useCallback(() => {
+    if (shortletsEmblaApi) shortletsEmblaApi.scrollPrev();
+  }, [shortletsEmblaApi]);
+
+  const scrollNextShortlets = useCallback(() => {
+    if (shortletsEmblaApi) shortletsEmblaApi.scrollNext();
+  }, [shortletsEmblaApi]);
+
+  const scrollPrevTours = useCallback(() => {
+    if (toursEmblaApi) toursEmblaApi.scrollPrev();
+  }, [toursEmblaApi]);
+
+  const scrollNextTours = useCallback(() => {
+    if (toursEmblaApi) toursEmblaApi.scrollNext();
+  }, [toursEmblaApi]);
+
+  // Sample shortlets data
+  const shortlets = [
+    {
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80",
+      title: "1BR Apartment – Lekki Phase 1",
+      location: "Lekki, Lagos",
+      price: "₦45,000",
+      amenities: ["Wi-Fi", "AC", "Pool", "Parking"]
+    },
+    {
+      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80",
+      title: "Luxury 2BR – Victoria Island",
+      location: "Victoria Island, Lagos",
+      price: "₦75,000",
+      amenities: ["Wi-Fi", "AC", "Gym", "Security"]
+    },
+    {
+      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80",
+      title: "Cozy Studio – Ikeja GRA",
+      location: "Ikeja, Lagos",
+      price: "₦35,000",
+      amenities: ["Wi-Fi", "AC", "Kitchen", "TV"]
+    },
+    {
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
+      title: "3BR Penthouse – Ikoyi",
+      location: "Ikoyi, Lagos",
+      price: "₦120,000",
+      amenities: ["Wi-Fi", "AC", "Pool", "Gym"]
+    },
+    {
+      image: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=600&q=80",
+      title: "Modern 2BR – Ajah",
+      location: "Ajah, Lagos",
+      price: "₦55,000",
+      amenities: ["Wi-Fi", "AC", "Parking", "Generator"]
+    }
+  ];
+
+  // Sample tours data
+  const tours = [
+    {
+      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
+      title: "Weekend in Dubai",
+      duration: "4D/3N",
+      priceFrom: "₦850,000",
+      tag: "International"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1565552645632-d725f8bfc19d?w=600&q=80",
+      title: "Zanzibar Escape",
+      duration: "5D/4N",
+      priceFrom: "₦650,000",
+      tag: "Regional"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80",
+      title: "Obudu Cattle Ranch",
+      duration: "3D/2N",
+      priceFrom: "₦180,000",
+      tag: "Local"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=600&q=80",
+      title: "Maldives Paradise",
+      duration: "7D/6N",
+      priceFrom: "₦1,200,000",
+      tag: "International"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80",
+      title: "Cape Town Adventure",
+      duration: "6D/5N",
+      priceFrom: "₦750,000",
+      tag: "Regional"
+    }
+  ];
 
   return (
     <Box minH="100vh">
@@ -302,7 +413,7 @@ export default function Home() {
         </Container>
       </AnimatedSection>
 
-      {/* Featured Shortlets */}
+      {/* Featured Shortlets - CAROUSEL */}
       <AnimatedSection bg="#FAFAFA">
         <Container maxW="7xl" py={20}>
           <MotionBox
@@ -321,36 +432,62 @@ export default function Home() {
             </Text>
           </MotionBox>
 
-          <MotionBox
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8}>
-              <ShortletCard
-                image="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80"
-                title="1BR Apartment – Lekki Phase 1"
-                location="Lekki, Lagos"
-                price="₦45,000"
-                amenities={["Wi-Fi", "AC", "Pool", "Parking"]}
-              />
-              <ShortletCard
-                image="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80"
-                title="Luxury 2BR – Victoria Island"
-                location="Victoria Island, Lagos"
-                price="₦75,000"
-                amenities={["Wi-Fi", "AC", "Gym", "Security"]}
-              />
-              <ShortletCard
-                image="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80"
-                title="Cozy Studio – Ikeja GRA"
-                location="Ikeja, Lagos"
-                price="₦35,000"
-                amenities={["Wi-Fi", "AC", "Kitchen", "TV"]}
-              />
-            </Grid>
-          </MotionBox>
+          {/* Carousel Container */}
+          <Box position="relative" mb={10}>
+            <Box overflow="hidden" ref={shortletsEmblaRef}>
+              <Flex gap={6}>
+                {shortlets.map((shortlet, index) => (
+                  <Box
+                    key={index}
+                    flex="0 0 100%"
+                    minW={0}
+                    css={{
+                      '@media (min-width: 768px)': {
+                        flex: '0 0 50%'
+                      },
+                      '@media (min-width: 1024px)': {
+                        flex: '0 0 33.333%'
+                      }
+                    }}
+                  >
+                    <ShortletCard {...shortlet} />
+                  </Box>
+                ))}
+              </Flex>
+            </Box>
+
+            {/* Navigation Buttons */}
+            <IconButton
+              position="absolute"
+              left={-4}
+              top="50%"
+              transform="translateY(-50%)"
+              onClick={scrollPrevShortlets}
+              bg="white"
+              _hover={{ bg: "gray.100" }}
+              boxShadow="lg"
+              borderRadius="full"
+              zIndex={10}
+              aria-label="Previous"
+            >
+              <ChevronLeft />
+            </IconButton>
+            <IconButton
+              position="absolute"
+              right={-4}
+              top="50%"
+              transform="translateY(-50%)"
+              onClick={scrollNextShortlets}
+              bg="white"
+              _hover={{ bg: "gray.100" }}
+              boxShadow="lg"
+              borderRadius="full"
+              zIndex={10}
+              aria-label="Next"
+            >
+              <ChevronRight />
+            </IconButton>
+          </Box>
 
           <Flex justify="center" mt={10}>
             <Button as="a" href="/shortlets" bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} size="lg">
@@ -360,7 +497,7 @@ export default function Home() {
         </Container>
       </AnimatedSection>
 
-      {/* Featured Tours */}
+      {/* Featured Tours - CAROUSEL */}
       <AnimatedSection bg="white">
         <Container maxW="7xl" py={20}>
           <MotionBox
@@ -379,36 +516,62 @@ export default function Home() {
             </Text>
           </MotionBox>
 
-          <MotionBox
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={8}>
-              <TourCard
-                image="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80"
-                title="Weekend in Dubai"
-                duration="4D/3N"
-                priceFrom="₦850,000"
-                tag="International"
-              />
-              <TourCard
-                image="https://images.unsplash.com/photo-1565552645632-d725f8bfc19d?w=600&q=80"
-                title="Zanzibar Escape"
-                duration="5D/4N"
-                priceFrom="₦650,000"
-                tag="Regional"
-              />
-              <TourCard
-                image="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80"
-                title="Obudu Cattle Ranch"
-                duration="3D/2N"
-                priceFrom="₦180,000"
-                tag="Local"
-              />
-            </Grid>
-          </MotionBox>
+          {/* Carousel Container */}
+          <Box position="relative" mb={10}>
+            <Box overflow="hidden" ref={toursEmblaRef}>
+              <Flex gap={6}>
+                {tours.map((tour, index) => (
+                  <Box
+                    key={index}
+                    flex="0 0 100%"
+                    minW={0}
+                    css={{
+                      '@media (min-width: 768px)': {
+                        flex: '0 0 50%'
+                      },
+                      '@media (min-width: 1024px)': {
+                        flex: '0 0 33.333%'
+                      }
+                    }}
+                  >
+                    <TourCard {...tour} />
+                  </Box>
+                ))}
+              </Flex>
+            </Box>
+
+            {/* Navigation Buttons */}
+            <IconButton
+              position="absolute"
+              left={-4}
+              top="50%"
+              transform="translateY(-50%)"
+              onClick={scrollPrevTours}
+              bg="white"
+              _hover={{ bg: "gray.100" }}
+              boxShadow="lg"
+              borderRadius="full"
+              zIndex={10}
+              aria-label="Previous"
+            >
+              <ChevronLeft />
+            </IconButton>
+            <IconButton
+              position="absolute"
+              right={-4}
+              top="50%"
+              transform="translateY(-50%)"
+              onClick={scrollNextTours}
+              bg="white"
+              _hover={{ bg: "gray.100" }}
+              boxShadow="lg"
+              borderRadius="full"
+              zIndex={10}
+              aria-label="Next"
+            >
+              <ChevronRight />
+            </IconButton>
+          </Box>
 
           <Flex justify="center" mt={10}>
             <Button as="a" href="/tours" bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} size="lg">
