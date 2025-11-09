@@ -110,7 +110,7 @@ export function Footer() {
 
         <Box borderTop="1px" borderColor="gray.800" pt={8} textAlign="center" color="gray.400">
           <Text>
-            &copy; 2024 Ontour Travels. All rights reserved. | Made with{" "}
+            &copy; 2025 Ontour Travels. All rights reserved. | Made with{" "}
             <Icon as={Heart} display="inline" color="red.500" fill="red.500" boxSize={4} /> by{" "}
             <Link
               href="https://github.com/peldevon"
