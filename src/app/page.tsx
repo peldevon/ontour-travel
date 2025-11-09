@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useRouter } from "next/navigation";
 import { Avatar } from "@/components/ui/avatar";
 import { 
   MapPin, 
@@ -92,6 +93,7 @@ export default function Home() {
   const [searchType, setSearchType] = useState<"flights" | "hotels">("flights");
   const [tripType, setTripType] = useState<"round-trip" | "one-way">("round-trip");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
   
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
@@ -99,13 +101,23 @@ export default function Home() {
 
   // Shortlets carousel
   const [shortletsEmblaRef, shortletsEmblaApi] = useEmblaCarousel(
-    { loop: true, align: "start" },
+    { 
+      loop: true, 
+      align: "start",
+      slidesToScroll: 1,
+      containScroll: "trimSnaps"
+    },
     [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
 
   // Tours carousel
   const [toursEmblaRef, toursEmblaApi] = useEmblaCarousel(
-    { loop: true, align: "start" },
+    { 
+      loop: true, 
+      align: "start",
+      slidesToScroll: 1,
+      containScroll: "trimSnaps"
+    },
     [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
 
@@ -128,6 +140,7 @@ export default function Home() {
   // Sample shortlets data
   const shortlets = [
     {
+      slug: "1br-apartment-lekki-phase-1",
       image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80",
       title: "1BR Apartment – Lekki Phase 1",
       location: "Lekki, Lagos",
@@ -135,6 +148,7 @@ export default function Home() {
       amenities: ["Wi-Fi", "AC", "Pool", "Parking"]
     },
     {
+      slug: "luxury-2br-victoria-island",
       image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80",
       title: "Luxury 2BR – Victoria Island",
       location: "Victoria Island, Lagos",
@@ -142,6 +156,7 @@ export default function Home() {
       amenities: ["Wi-Fi", "AC", "Gym", "Security"]
     },
     {
+      slug: "cozy-studio-ikeja-gra",
       image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80",
       title: "Cozy Studio – Ikeja GRA",
       location: "Ikeja, Lagos",
@@ -149,6 +164,7 @@ export default function Home() {
       amenities: ["Wi-Fi", "AC", "Kitchen", "TV"]
     },
     {
+      slug: "3br-penthouse-ikoyi",
       image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",
       title: "3BR Penthouse – Ikoyi",
       location: "Ikoyi, Lagos",
@@ -156,6 +172,7 @@ export default function Home() {
       amenities: ["Wi-Fi", "AC", "Pool", "Gym"]
     },
     {
+      slug: "modern-2br-ajah",
       image: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=600&q=80",
       title: "Modern 2BR – Ajah",
       location: "Ajah, Lagos",
@@ -884,7 +901,9 @@ function TrustBadge({ icon, text }: { icon: any; text: string }) {
   );
 }
 
-function ShortletCard({ image, title, location, price, amenities }: any) {
+function ShortletCard({ slug, image, title, location, price, amenities }: any) {
+  const router = useRouter();
+  
   return (
     <MotionCard
       overflow="hidden"
@@ -921,7 +940,14 @@ function ShortletCard({ image, title, location, price, amenities }: any) {
           <Text fontSize="2xl" fontWeight="bold" color="#152852" fontFamily="'Montserrat', sans-serif">{price}</Text>
           <Text fontSize="sm" color="#555555" fontFamily="'Open Sans', sans-serif">per night</Text>
         </Flex>
-        <Button bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} w="full" mt={4} as="a" href="/shortlets">
+        <Button 
+          bg="#152852" 
+          color="white" 
+          _hover={{ bg: "#0d1a35" }} 
+          w="full" 
+          mt={4}
+          onClick={() => router.push(`/shortlets/${slug}`)}
+        >
           View Details
         </Button>
       </Card.Body>
