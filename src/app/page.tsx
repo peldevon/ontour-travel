@@ -94,16 +94,16 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
 
-  // Shortlets carousel with more items
+  // Shortlets carousel
   const [shortletsEmblaRef, shortletsEmblaApi] = useEmblaCarousel(
-    { loop: true, align: "start", slidesToScroll: 1 },
+    { loop: true, align: "start" },
     [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
 
-  // Tours carousel with more items
+  // Tours carousel
   const [toursEmblaRef, toursEmblaApi] = useEmblaCarousel(
-    { loop: true, align: "start", slidesToScroll: 1 },
-    [Autoplay({ delay: 3500, stopOnInteraction: false })]
+    { loop: true, align: "start" },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
 
   const scrollPrevShortlets = useCallback(() => {
@@ -122,7 +122,7 @@ export default function Home() {
     if (toursEmblaApi) toursEmblaApi.scrollNext();
   }, [toursEmblaApi]);
 
-  // Expanded shortlets data - 8 listings
+  // Sample shortlets data
   const shortlets = [
     {
       image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80",
@@ -158,87 +158,42 @@ export default function Home() {
       location: "Ajah, Lagos",
       price: "₦55,000",
       amenities: ["Wi-Fi", "AC", "Parking", "Generator"]
-    },
-    {
-      image: "https://images.unsplash.com/photo-1515263487990-61b07816b324?w=600&q=80",
-      title: "Spacious 3BR – Banana Island",
-      location: "Banana Island, Lagos",
-      price: "₦200,000",
-      amenities: ["Wi-Fi", "AC", "Pool", "Beach Access"]
-    },
-    {
-      image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80",
-      title: "Modern Loft – Yaba",
-      location: "Yaba, Lagos",
-      price: "₦40,000",
-      amenities: ["Wi-Fi", "AC", "Co-working", "Kitchen"]
-    },
-    {
-      image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600&q=80",
-      title: "Deluxe 2BR – Lekki Phase 2",
-      location: "Lekki, Lagos",
-      price: "₦65,000",
-      amenities: ["Wi-Fi", "AC", "Gym", "24/7 Power"]
     }
   ];
 
-  // Expanded tours data - 8 destinations
+  // Sample tours data
   const tours = [
-    {
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
-      title: "Cancun",
-      location: "Mexico",
-      priceFrom: "1,400",
-      description: "Beautiful beaches and vibrant nightlife await you"
-    },
     {
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
       title: "Dubai",
-      location: "UAE",
-      priceFrom: "2,100",
-      description: "Experience luxury and adventure in the desert city"
+      location: "Dubai, UAE",
+      duration: "4D/3N",
+      priceFrom: "299",
+      tag: "International"
     },
     {
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
-      title: "Bali",
-      location: "Indonesia",
-      priceFrom: "1,800",
-      description: "Tropical paradise with stunning temples and beaches"
+      image: "https://images.unsplash.com/photo-1565552645632-d725f8bfc19d?w=600&q=80",
+      title: "Zanzibar",
+      location: "Zanzibar, Tanzania",
+      duration: "5D/4N",
+      priceFrom: "239",
+      tag: "Regional"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80",
+      title: "Obudu",
+      location: "Cross River, Nigeria",
+      duration: "3D/2N",
+      priceFrom: "319",
+      tag: "Local"
     },
     {
       image: "https://images.unsplash.com/photo-1524850011238-e3d235c7d4c9?w=600&q=80",
       title: "Maldives",
-      location: "Indian Ocean",
-      priceFrom: "3,200",
-      description: "Pristine waters and overwater bungalows"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80",
-      title: "Paris",
-      location: "France",
-      priceFrom: "1,900",
-      description: "The city of love, art, and exquisite cuisine"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=600&q=80",
-      title: "Santorini",
-      location: "Greece",
-      priceFrom: "2,300",
-      description: "Iconic white buildings and stunning sunsets"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1580837119756-563d608dd119?w=600&q=80",
-      title: "Tokyo",
-      location: "Japan",
-      priceFrom: "2,500",
-      description: "Ancient traditions meet futuristic technology"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80",
-      title: "Cape Town",
-      location: "South Africa",
-      priceFrom: "1,600",
-      description: "Stunning landscapes and diverse wildlife"
+      location: "Maldives",
+      duration: "7D/6N",
+      priceFrom: "479",
+      tag: "International"
     }
   ];
 
@@ -462,7 +417,7 @@ export default function Home() {
         </Container>
       </AnimatedSection>
 
-      {/* Featured Shortlets - ENHANCED CAROUSEL */}
+      {/* Featured Shortlets - CAROUSEL */}
       <AnimatedSection bg="#FAFAFA">
         <Container maxW="7xl" py={20}>
           <MotionBox
@@ -482,14 +437,22 @@ export default function Home() {
           </MotionBox>
 
           {/* Carousel Container */}
-          <Box position="relative" mb={10} px={{ base: 0, md: 8 }}>
+          <Box position="relative" mb={10}>
             <Box overflow="hidden" ref={shortletsEmblaRef}>
-              <Flex gap={{ base: 4, md: 6 }}>
+              <Flex gap={6}>
                 {shortlets.map((shortlet, index) => (
                   <Box
                     key={index}
-                    flex={{ base: "0 0 90%", sm: "0 0 45%", md: "0 0 45%", lg: "0 0 30%" }}
+                    flex="0 0 100%"
                     minW={0}
+                    css={{
+                      '@media (min-width: 768px)': {
+                        flex: '0 0 50%'
+                      },
+                      '@media (min-width: 1024px)': {
+                        flex: '0 0 33.333%'
+                      }
+                    }}
                   >
                     <ShortletCard {...shortlet} />
                   </Box>
@@ -500,37 +463,33 @@ export default function Home() {
             {/* Navigation Buttons */}
             <IconButton
               position="absolute"
-              left={{ base: 0, md: -2 }}
+              left={-4}
               top="50%"
               transform="translateY(-50%)"
               onClick={scrollPrevShortlets}
               bg="white"
-              _hover={{ bg: "gray.200" }}
+              _hover={{ bg: "gray.100" }}
               boxShadow="lg"
               borderRadius="full"
               zIndex={10}
               aria-label="Previous"
-              display={{ base: "flex", md: "flex" }}
-              color="#555555"
             >
-              <ChevronLeft color="#555555" />
+              <ChevronLeft />
             </IconButton>
             <IconButton
               position="absolute"
-              right={{ base: 0, md: -2 }}
+              right={-4}
               top="50%"
               transform="translateY(-50%)"
               onClick={scrollNextShortlets}
               bg="white"
-              _hover={{ bg: "gray.200" }}
+              _hover={{ bg: "gray.100" }}
               boxShadow="lg"
               borderRadius="full"
               zIndex={10}
               aria-label="Next"
-              display={{ base: "flex", md: "flex" }}
-              color="#555555"
             >
-              <ChevronRight color="#555555" />
+              <ChevronRight />
             </IconButton>
           </Box>
 
@@ -542,121 +501,94 @@ export default function Home() {
         </Container>
       </AnimatedSection>
 
-      {/* Travel Destinations Showcase - ENHANCED CAROUSEL WITHIN GRID */}
+      {/* Featured Tours - CAROUSEL */}
       <AnimatedSection bg="white">
         <Container maxW="7xl" py={20}>
-          {/* Main CSS Grid Wrapper */}
-          <Box
-            display="grid"
-            gridTemplateColumns={{ base: "30px 1fr", md: "50px 1fr" }}
-            gap={0}
-            borderLeft="5px solid #FFAA00"
-            borderTop="1px solid #FFAA00"
-            borderBottom="1px solid #FFAA00"
-            className="destination-section"
-          >
-            {/* Column 1: Vertical Title */}
-            <Flex
-              alignItems="center"
-              justifyContent="center"
-              py={8}
-              css={{
-                writingMode: "vertical-rl",
-                textOrientation: "mixed"
-              }}
-            >
-              <Text
-                fontSize={{ base: "lg", md: "2xl" }}
-                fontWeight="bold"
-                color="#FFAA00"
-                fontFamily="'Montserrat', sans-serif"
+          {/* Section Header with "Destinations" label on left */}
+          <Flex justify="space-between" align="flex-start" mb={8}>
+            <Box>
+              <Text 
+                fontSize="sm" 
+                fontWeight="bold" 
+                color="#C9A449" 
+                textTransform="uppercase" 
                 letterSpacing="wider"
+                mb={3}
+                fontFamily="'Poppins', sans-serif"
               >
-                DESTINATIONS
+                Destinations
               </Text>
-            </Flex>
+              <Heading as="h2" fontSize="3xl" fontWeight="bold" color="#2C2C2C" fontFamily="'Montserrat', sans-serif">
+                Curated Tours & Experiences
+              </Heading>
+            </Box>
+          </Flex>
 
-            {/* Column 2: Content Area with Carousel */}
-            <Box p={{ base: 4, md: 8 }}>
-              {/* Carousel for Tour Cards */}
-              <Box position="relative">
-                <Box overflow="hidden" ref={toursEmblaRef}>
-                  <Flex>
-                    {tours.map((destination, index) => (
-                      <Box
-                        key={index}
-                        flex="0 0 100%"
-                        minW={0}
-                        px={2}
-                        css={{
-                          '@media (min-width: 640px)': {
-                            flex: '0 0 50%'
-                          },
-                          '@media (min-width: 768px)': {
-                            flex: '0 0 33.333%'
-                          },
-                          '@media (min-width: 1024px)': {
-                            flex: '0 0 25%'
-                          }
-                        }}
-                      >
-                        <DestinationCard {...destination} />
-                      </Box>
-                    ))}
-                  </Flex>
-                </Box>
-
-                {/* Navigation Buttons */}
-                <IconButton
-                  position="absolute"
-                  left={-4}
-                  top="50%"
-                  transform="translateY(-50%)"
-                  onClick={scrollPrevTours}
-                  bg="white"
-                  _hover={{ bg: "gray.100" }}
-                  boxShadow="lg"
-                  borderRadius="full"
-                  zIndex={10}
-                  aria-label="Previous"
-                  display={{ base: "none", md: "flex" }}
-                >
-                  <ChevronLeft />
-                </IconButton>
-                <IconButton
-                  position="absolute"
-                  right={-4}
-                  top="50%"
-                  transform="translateY(-50%)"
-                  onClick={scrollNextTours}
-                  bg="white"
-                  _hover={{ bg: "gray.100" }}
-                  boxShadow="lg"
-                  borderRadius="full"
-                  zIndex={10}
-                  aria-label="Next"
-                  display={{ base: "none", md: "flex" }}
-                >
-                  <ChevronRight />
-                </IconButton>
-              </Box>
-
-              {/* See More Button */}
-              <Flex justify="center" mt={8}>
-                <Button
-                  as="a"
-                  href="/tours"
-                  bg="#FFAA00"
-                  color="white"
-                  _hover={{ bg: "#e69900" }}
-                  size="lg"
-                  px={8}
-                >
-                  See more
-                </Button>
+          {/* Carousel Container */}
+          <Box position="relative" mb={10}>
+            <Box overflow="hidden" ref={toursEmblaRef}>
+              <Flex gap={6}>
+                {tours.map((tour, index) => (
+                  <Box
+                    key={index}
+                    flex="0 0 100%"
+                    minW={0}
+                    css={{
+                      '@media (min-width: 640px)': {
+                        flex: '0 0 50%'
+                      },
+                      '@media (min-width: 768px)': {
+                        flex: '0 0 33.333%'
+                      },
+                      '@media (min-width: 1024px)': {
+                        flex: '0 0 25%'
+                      }
+                    }}
+                  >
+                    <TourDestinationCard {...tour} />
+                  </Box>
+                ))}
               </Flex>
             </Box>
+
+            {/* Navigation Buttons */}
+            <IconButton
+              position="absolute"
+              left={-4}
+              top="50%"
+              transform="translateY(-50%)"
+              onClick={scrollPrevTours}
+              bg="white"
+              _hover={{ bg: "gray.100" }}
+              boxShadow="lg"
+              borderRadius="full"
+              zIndex={10}
+              aria-label="Previous"
+            >
+              <ChevronLeft />
+            </IconButton>
+            <IconButton
+              position="absolute"
+              right={-4}
+              top="50%"
+              transform="translateY(-50%)"
+              onClick={scrollNextTours}
+              bg="white"
+              _hover={{ bg: "gray.100" }}
+              boxShadow="lg"
+              borderRadius="full"
+              zIndex={10}
+              aria-label="Next"
+            >
+              <ChevronRight />
+            </IconButton>
           </Box>
+
+          <Flex justify="center" mt={10}>
+            <Button as="a" href="/tours" bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} size="lg">
+              Explore All Tours
+            </Button>
+          </Flex>
         </Container>
       </AnimatedSection>
 
@@ -942,91 +874,102 @@ function ShortletCard({ image, title, location, price, amenities }: any) {
   );
 }
 
-function DestinationCard({ image, title, location, priceFrom, description }: any) {
+function TourCard({ image, title, duration, priceFrom, tag }: any) {
   return (
-    <Box
-      borderRadius="lg"
+    <MotionCard
       overflow="hidden"
-      bg="white"
-      boxShadow="md"
       cursor="pointer"
-      transition="all 0.3s"
-      _hover={{ boxShadow: "xl", transform: "translateY(-5px)" }}
-      h="full"
-      display="flex"
-      flexDirection="column"
-      className="destination-card"
+      variants={fadeInUp}
+      whileHover={{ y: -10, boxShadow: "xl" }}
+      transition={{ duration: 0.3 }}
     >
-      {/* Image Container - 60-65% height */}
-      <Box position="relative" h="320px" overflow="hidden">
-        <Image
+      <Box position="relative" h="64" overflow="hidden">
+        <Image 
           src={image}
           alt={title}
           w="full"
           h="full"
           objectFit="cover"
         />
-        {/* Overlay Bar with Destination Name */}
-        <Box
-          position="absolute"
-          bottom={0}
-          left={0}
-          right={0}
-          bg="rgba(0, 0, 0, 0.7)"
-          py={3}
-          px={4}
+        <Box position="absolute" top={4} right={4} px={3} py={1} bg="#152852" color="white" borderRadius="md" fontSize="sm">
+          {tag}
+        </Box>
+      </Box>
+      <Card.Body p={6}>
+        <Heading as="h3" fontSize="xl" fontWeight="bold" mb={2} color="#2C2C2C" fontFamily="'Montserrat', sans-serif">
+          {title}
+        </Heading>
+        <Text fontSize="sm" color="#555555" mb={4} fontFamily="'Open Sans', sans-serif">{duration}</Text>
+        <Flex justify="space-between" align="center" mb={4}>
+          <Box>
+            <Text fontSize="xs" color="#555555" fontFamily="'Open Sans', sans-serif">From</Text>
+            <Text fontSize="2xl" fontWeight="bold" color="#152852" fontFamily="'Montserrat', sans-serif">{priceFrom}</Text>
+          </Box>
+        </Flex>
+        <Button bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} w="full" as="a" href="/tours">
+          View Tour
+        </Button>
+      </Card.Body>
+    </MotionCard>
+  );
+}
+
+function TourDestinationCard({ image, title, location, priceFrom, tag }: any) {
+  return (
+    <MotionCard
+      overflow="hidden"
+      cursor="pointer"
+      variants={fadeInUp}
+      whileHover={{ y: -10, boxShadow: "xl" }}
+      transition={{ duration: 0.3 }}
+      bg="white"
+      borderRadius="lg"
+    >
+      <Box position="relative" h="48" overflow="hidden">
+        <Image 
+          src={image}
+          alt={title}
+          w="full"
+          h="full"
+          objectFit="cover"
+        />
+        {/* Price badge - positioned like reference image */}
+        <Box 
+          position="absolute" 
+          bottom={3} 
+          left={3}
+          bg="white" 
+          px={3} 
+          py={2} 
+          borderRadius="md"
+          boxShadow="md"
         >
-          <Text
-            color="white"
-            fontSize="xl"
-            fontWeight="bold"
-            fontFamily="'Montserrat', sans-serif"
-          >
-            {title}
+          <Text fontSize="xs" color="#555555" fontFamily="'Open Sans', sans-serif" lineHeight="1">
+            From
+          </Text>
+          <Text fontSize="2xl" fontWeight="bold" color="#C9A449" fontFamily="'Montserrat', sans-serif" lineHeight="1.2">
+            {priceFrom}<Text as="span" fontSize="lg">$</Text>
           </Text>
         </Box>
       </Box>
-
-      {/* Content Area */}
-      <VStack align="stretch" p={4} gap={3} flex="1">
-        {/* Price Block */}
-        <Box textAlign="center">
-          <Text fontSize="sm" color="#555555" fontFamily="'Open Sans', sans-serif">
-            From
-          </Text>
-          <Text fontSize="3xl" fontWeight="bold" color="#2C2C2C" fontFamily="'Montserrat', sans-serif">
-            <Text as="span" color="#FFAA00" fontSize="2xl">$</Text>
-            {priceFrom}
-          </Text>
-        </Box>
-
-        {/* Description */}
-        <Text
-          fontSize="sm"
-          color="#555555"
-          textAlign="center"
-          fontFamily="'Open Sans', sans-serif"
-          noOfLines={2}
-          lineHeight="1.5"
+      <Card.Body p={4}>
+        <Heading 
+          as="h3" 
+          fontSize="lg" 
+          fontWeight="bold" 
+          mb={1} 
+          color="#2C2C2C" 
+          fontFamily="'Montserrat', sans-serif"
+          noOfLines={1}
         >
-          {description}
-        </Text>
-
-        {/* CTA Button */}
-        <Button
-          bg="#FFAA00"
-          color="white"
-          _hover={{ bg: "#e69900" }}
-          size="md"
-          w="full"
-          mt="auto"
-          as="a"
-          href="/tours"
-        >
-          See more
-        </Button>
-      </VStack>
-    </Box>
+          {title}
+        </Heading>
+        <HStack gap={1} color="#555555" fontSize="sm">
+          <Icon as={MapPin} boxSize={4} />
+          <Text fontFamily="'Open Sans', sans-serif" noOfLines={1}>{location}</Text>
+        </HStack>
+      </Card.Body>
+    </MotionCard>
   );
 }
 
