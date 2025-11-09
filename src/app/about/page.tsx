@@ -12,7 +12,6 @@ import {
   Grid,
   HStack,
   VStack,
-  Icon,
   Link,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -96,7 +95,7 @@ export default function AboutPage() {
         <Container maxW="7xl" py={4}>
           <Flex justify="space-between" align="center">
             <HStack gap={2} as="a" href="/">
-              <Icon as={Plane} boxSize={8} color="blue.600" />
+              <Plane size={32} color="#152852" />
               <Text fontSize="2xl" fontWeight="bold" color="gray.900">
                 Ontour Travels
               </Text>
@@ -108,7 +107,7 @@ export default function AboutPage() {
               <Link href="/tours" color="gray.700">Tours</Link>
               <Link href="/contact" color="gray.700">Contact</Link>
               <Button colorPalette="blue" size="sm" as="a" href="https://wa.me/2348123456789" target="_blank">
-                <Icon as={MessageCircle} mr={1} />
+                <MessageCircle size={16} style={{ marginRight: '4px' }} />
                 WhatsApp
               </Button>
             </HStack>
@@ -423,8 +422,8 @@ export default function AboutPage() {
               target="_blank"
               colorPalette="green"
               size="lg"
-              leftIcon={<MessageCircle />}
             >
+              <MessageCircle size={20} style={{ marginRight: '8px' }} />
               Chat on WhatsApp
             </Button>
           </HStack>
@@ -437,7 +436,7 @@ export default function AboutPage() {
           <Grid templateColumns={{ base: "1fr", md: "repeat(4, 1fr)" }} gap={8}>
             <Box>
               <HStack gap={2} mb={4}>
-                <Icon as={Plane} boxSize={8} color="blue.400" />
+                <Plane size={32} color="#60A5FA" />
                 <Text fontSize="2xl" fontWeight="bold">Ontour Travels</Text>
               </HStack>
               <Text color="gray.400" fontSize="sm">
@@ -480,7 +479,7 @@ export default function AboutPage() {
   );
 }
 
-function MVVCard({ icon, title, description, color }: any) {
+function MVVCard({ icon: IconComponent, title, description, color }: any) {
   return (
     <MotionCard
       variants={fadeInUp}
@@ -502,7 +501,7 @@ function MVVCard({ icon, title, description, color }: any) {
             alignItems="center"
             justifyContent="center"
           >
-            <Icon as={icon} boxSize={10} color={`${color}.600`} />
+            <IconComponent size={40} color={color === "blue" ? "#2563EB" : color === "purple" ? "#9333EA" : "#16A34A"} />
           </Box>
         </Flex>
         <Heading as="h3" fontSize="xl" fontWeight="bold" mb={4} color="gray.900">
@@ -516,7 +515,7 @@ function MVVCard({ icon, title, description, color }: any) {
   );
 }
 
-function USPCard({ icon, title, description }: any) {
+function USPCard({ icon: IconComponent, title, description }: any) {
   return (
     <MotionBox
       variants={fadeInUp}
@@ -534,7 +533,7 @@ function USPCard({ icon, title, description }: any) {
           alignItems="center"
           justifyContent="center"
         >
-          <Icon as={icon} boxSize={8} color="blue.600" />
+          <IconComponent size={32} color="#2563EB" />
         </Box>
         <Heading as="h3" fontSize="lg" fontWeight="bold" color="gray.900">
           {title}
