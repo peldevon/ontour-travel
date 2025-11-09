@@ -264,7 +264,7 @@ export default function ContactPage() {
                       <Box>
                         <Text fontWeight="medium" mb={2} color="gray.700">Service Type *</Text>
                         <Select.Root
-                          value={[formData.service]}
+                          value={formData.service ? [formData.service] : []}
                           onValueChange={(e) => setFormData({ ...formData, service: e.value[0] })}
                           size="lg"
                         >
