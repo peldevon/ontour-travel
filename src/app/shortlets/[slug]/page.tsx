@@ -11,7 +11,6 @@ import {
   Grid,
   HStack,
   VStack,
-  Icon,
   Flex,
   Card,
   Image,
@@ -151,7 +150,7 @@ export default function ShortletDetailPage() {
             Sorry, we couldn't find the property you're looking for.
           </Text>
           <Button onClick={() => router.push("/shortlets")} colorPalette="blue">
-            <Icon as={ArrowLeft} mr={2} />
+            <ArrowLeft size={20} style={{ marginRight: '8px' }} />
             Back to Shortlets
           </Button>
         </Container>
@@ -163,14 +162,8 @@ export default function ShortletDetailPage() {
 
   return (
     <Box minH="100vh">
-      {/* Navigation Header - Now visible on mobile */}
-      <Box
-        position="sticky"
-        top={0}
-        zIndex={50}
-        bg="white"
-        boxShadow="sm"
-      >
+      {/* Navigation Header */}
+      <Box position="sticky" top={0} zIndex={50} bg="white" boxShadow="sm">
         <Container maxW="7xl" py={4}>
           <Flex justify="space-between" align="center">
             <HStack gap={2} as="a" href="/">
@@ -189,16 +182,11 @@ export default function ShortletDetailPage() {
               <Link href="/about" color="#2C2C2C" _hover={{ color: "#152852" }}>About</Link>
               <Link href="/contact" color="#2C2C2C" _hover={{ color: "#152852" }}>Contact</Link>
               <Button bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} size="sm" as="a" href="https://wa.me/2348123456789" target="_blank">
-                <Icon as={MessageCircle} mr={1} />
+                <MessageCircle size={16} style={{ marginRight: '4px' }} />
                 WhatsApp
               </Button>
             </HStack>
-            <IconButton 
-              display={{ base: "flex", md: "none" }} 
-              aria-label="Menu"
-              onClick={() => setMobileMenuOpen(true)}
-              variant="ghost"
-            >
+            <IconButton display={{ base: "flex", md: "none" }} aria-label="Menu" onClick={() => setMobileMenuOpen(true)} variant="ghost">
               <Menu />
             </IconButton>
           </Flex>
@@ -206,7 +194,7 @@ export default function ShortletDetailPage() {
       </Box>
 
       {/* Mobile Menu Drawer */}
-      <Drawer.Root open={mobileMenuOpen} onOpenChange={(e) => setMobileMenuOpen(e.open)} placement="end">
+      <Drawer.Root open={mobileMenuOpen} onOpenChange={(details) => setMobileMenuOpen(details.open)} placement="end">
         <Drawer.Backdrop />
         <Drawer.Positioner>
           <Drawer.Content>
@@ -220,26 +208,14 @@ export default function ShortletDetailPage() {
             </Drawer.Header>
             <Drawer.Body>
               <VStack gap={4} align="stretch">
-                <Link href="/" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>
-                  Home
-                </Link>
-                <Link href="/book" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>
-                  Flights & Hotels
-                </Link>
-                <Link href="/shortlets" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>
-                  Shortlets
-                </Link>
-                <Link href="/tours" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>
-                  Tours
-                </Link>
-                <Link href="/about" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>
-                  About
-                </Link>
-                <Link href="/contact" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>
-                  Contact
-                </Link>
+                <Link href="/" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+                <Link href="/book" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>Flights & Hotels</Link>
+                <Link href="/shortlets" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>Shortlets</Link>
+                <Link href="/tours" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>Tours</Link>
+                <Link href="/about" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>About</Link>
+                <Link href="/contact" color="#2C2C2C" _hover={{ color: "#152852" }} fontSize="lg" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
                 <Button bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} size="lg" as="a" href="https://wa.me/2348123456789" target="_blank">
-                  <Icon as={MessageCircle} mr={2} />
+                  <MessageCircle size={20} style={{ marginRight: '8px' }} />
                   WhatsApp
                 </Button>
               </VStack>
@@ -250,11 +226,8 @@ export default function ShortletDetailPage() {
 
       {/* Back Button */}
       <Container maxW="7xl" py={4}>
-        <Button
-          variant="ghost"
-          onClick={() => router.push("/shortlets")}
-          leftIcon={<ArrowLeft />}
-        >
+        <Button variant="ghost" onClick={() => router.push("/shortlets")}>
+          <ArrowLeft size={20} style={{ marginRight: '8px' }} />
           Back to Shortlets
         </Button>
       </Container>
@@ -263,13 +236,7 @@ export default function ShortletDetailPage() {
       <Container maxW="7xl" mb={8}>
         <Grid templateColumns={{ base: "1fr", md: "2fr 1fr" }} gap={4} h={{ base: "auto", md: "500px" }}>
           <Box position="relative" overflow="hidden" borderRadius="xl">
-            <Image
-              src={shortlet.gallery[selectedImage]}
-              alt={shortlet.title}
-              w="full"
-              h="full"
-              objectFit="cover"
-            />
+            <Image src={shortlet.gallery[selectedImage]} alt={shortlet.title} w="full" h="full" objectFit="cover" />
           </Box>
           <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "1fr" }} gap={4}>
             {shortlet.gallery.slice(0, 4).map((img, idx) => (
@@ -284,13 +251,7 @@ export default function ShortletDetailPage() {
                 onClick={() => setSelectedImage(idx)}
                 _hover={{ opacity: 0.8 }}
               >
-                <Image
-                  src={img}
-                  alt={`${shortlet.title} ${idx + 1}`}
-                  w="full"
-                  h="full"
-                  objectFit="cover"
-                />
+                <Image src={img} alt={`${shortlet.title} ${idx + 1}`} w="full" h="full" objectFit="cover" />
               </Box>
             ))}
           </Grid>
@@ -320,17 +281,16 @@ export default function ShortletDetailPage() {
 
               <HStack gap={4} mb={4} flexWrap="wrap">
                 <HStack gap={2}>
-                  <Icon as={MapPin} color="blue.600" boxSize={5} />
+                  <MapPin size={20} color="#2563EB" />
                   <Text color="gray.700" fontWeight="medium">{shortlet.location}</Text>
                 </HStack>
                 <HStack gap={1}>
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Icon
+                    <Star
                       key={i}
-                      as={Star}
-                      boxSize={4}
-                      fill={i < Math.floor(shortlet.rating) ? "yellow.400" : "none"}
-                      color={i < Math.floor(shortlet.rating) ? "yellow.400" : "gray.300"}
+                      size={16}
+                      fill={i < Math.floor(shortlet.rating) ? "#FBBF24" : "none"}
+                      color={i < Math.floor(shortlet.rating) ? "#FBBF24" : "#D1D5DB"}
                     />
                   ))}
                   <Text fontSize="sm" color="gray.600" ml={2}>
@@ -342,19 +302,19 @@ export default function ShortletDetailPage() {
               {/* Combined Property Details with Check-in/Check-out */}
               <Flex gap={6} flexWrap="wrap" color="gray.700" align="center">
                 <HStack gap={2}>
-                  <Icon as={Home} color="blue.600" />
+                  <Home size={20} color="#2563EB" />
                   <Text>{shortlet.bedrooms} Bedroom{shortlet.bedrooms > 1 ? 's' : ''}</Text>
                 </HStack>
                 <HStack gap={2}>
-                  <Icon as={Users} color="blue.600" />
+                  <Users size={20} color="#2563EB" />
                   <Text>Up to {shortlet.max_guests} guests</Text>
                 </HStack>
                 <HStack gap={2}>
-                  <Icon as={Clock} color="blue.600" />
+                  <Clock size={20} color="#2563EB" />
                   <Text>Check-in: {shortlet.policies.check_in}</Text>
                 </HStack>
                 <HStack gap={2}>
-                  <Icon as={Clock} color="orange.600" />
+                  <Clock size={20} color="#F97316" />
                   <Text>Check-out: {shortlet.policies.check_out}</Text>
                 </HStack>
               </Flex>
@@ -373,7 +333,7 @@ export default function ShortletDetailPage() {
             {/* Location Details */}
             <MotionBox variants={fadeInUp} initial="hidden" animate="visible" mb={8}>
               <Heading as="h2" fontSize="2xl" mb={4} color="gray.900">
-                <Icon as={MapPin} color="blue.600" mr={2} />
+                <MapPin size={24} color="#2563EB" style={{ display: 'inline', marginRight: '8px' }} />
                 Location & Nearby
               </Heading>
               <Card.Root bg="blue.50" borderColor="blue.200">
@@ -406,7 +366,7 @@ export default function ShortletDetailPage() {
                   const IconComponent = amenityIcons[amenity] || CheckCircle;
                   return (
                     <HStack key={idx} gap={3} p={3} bg="gray.50" borderRadius="md">
-                      <Icon as={IconComponent} color="blue.600" boxSize={5} flexShrink={0} />
+                      <IconComponent size={20} color="#2563EB" style={{ flexShrink: 0 }} />
                       <Text color="gray.700">{amenity}</Text>
                     </HStack>
                   );
@@ -422,7 +382,7 @@ export default function ShortletDetailPage() {
               <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={3}>
                 {shortlet.features.map((feature, idx) => (
                   <HStack key={idx} gap={2}>
-                    <Icon as={CheckCircle} color="green.500" boxSize={4} />
+                    <CheckCircle size={16} color="#10B981" />
                     <Text fontSize="sm" color="gray.700">{feature}</Text>
                   </HStack>
                 ))}
@@ -432,13 +392,13 @@ export default function ShortletDetailPage() {
             {/* Check-in/out */}
             <MotionBox variants={fadeInUp} initial="hidden" animate="visible" mb={8}>
               <Heading as="h2" fontSize="2xl" mb={4} color="gray.900">
-                <Icon as={Calendar} color="blue.600" mr={2} />
+                <Calendar size={24} color="#2563EB" style={{ display: 'inline', marginRight: '8px' }} />
                 Check-in & Check-out
               </Heading>
               <Grid templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }} gap={4}>
                 <Card.Root>
                   <Card.Body p={5} textAlign="center">
-                    <Icon as={Clock} color="blue.600" boxSize={8} mx="auto" mb={2} />
+                    <Clock size={32} color="#2563EB" style={{ margin: '0 auto 8px' }} />
                     <Text fontWeight="medium" color="gray.900" mb={1}>Check-in</Text>
                     <Text color="gray.700">{shortlet.policies.check_in}</Text>
                   </Card.Body>
@@ -446,7 +406,7 @@ export default function ShortletDetailPage() {
 
                 <Card.Root>
                   <Card.Body p={5} textAlign="center">
-                    <Icon as={Clock} color="orange.600" boxSize={8} mx="auto" mb={2} />
+                    <Clock size={32} color="#F97316" style={{ margin: '0 auto 8px' }} />
                     <Text fontWeight="medium" color="gray.900" mb={1}>Check-out</Text>
                     <Text color="gray.700">{shortlet.policies.check_out}</Text>
                   </Card.Body>
@@ -454,7 +414,7 @@ export default function ShortletDetailPage() {
 
                 <Card.Root>
                   <Card.Body p={5} textAlign="center">
-                    <Icon as={Calendar} color="purple.600" boxSize={8} mx="auto" mb={2} />
+                    <Calendar size={32} color="#9333EA" style={{ margin: '0 auto 8px' }} />
                     <Text fontWeight="medium" color="gray.900" mb={1}>Minimum Stay</Text>
                     <Text color="gray.700">{shortlet.policies.minimum_stay}</Text>
                   </Card.Body>
@@ -465,13 +425,17 @@ export default function ShortletDetailPage() {
             {/* House Rules */}
             <MotionBox variants={fadeInUp} initial="hidden" animate="visible" mb={8}>
               <Heading as="h2" fontSize="2xl" mb={4} color="gray.900">
-                <Icon as={AlertCircle} color="orange.600" mr={2} />
+                <AlertCircle size={24} color="#F97316" style={{ display: 'inline', marginRight: '8px' }} />
                 House Rules
               </Heading>
               <VStack gap={2} align="stretch">
                 {shortlet.policies.house_rules.map((rule, idx) => (
                   <HStack key={idx} gap={3} p={3} bg="orange.50" borderRadius="md">
-                    <Icon as={rule.includes("No") || rule.includes("not allowed") ? XCircle : CheckCircle} color={rule.includes("No") || rule.includes("not allowed") ? "red.500" : "blue.600"} boxSize={5} flexShrink={0} />
+                    {rule.includes("No") || rule.includes("not allowed") ? (
+                      <XCircle size={20} color="#EF4444" style={{ flexShrink: 0 }} />
+                    ) : (
+                      <CheckCircle size={20} color="#2563EB" style={{ flexShrink: 0 }} />
+                    )}
                     <Text color="gray.700">{rule}</Text>
                   </HStack>
                 ))}
@@ -493,7 +457,7 @@ export default function ShortletDetailPage() {
             {/* Security Deposit */}
             <MotionBox variants={fadeInUp} initial="hidden" animate="visible">
               <Heading as="h2" fontSize="2xl" mb={4} color="gray.900">
-                <Icon as={Shield} color="green.600" mr={2} />
+                <Shield size={24} color="#10B981" style={{ display: 'inline', marginRight: '8px' }} />
                 Security Deposit
               </Heading>
               <Card.Root bg="green.50" borderColor="green.200">
@@ -509,19 +473,11 @@ export default function ShortletDetailPage() {
 
           {/* Sidebar */}
           <Box>
-            <MotionCard
-              position="sticky"
-              top={24}
-              variants={fadeInUp}
-              initial="hidden"
-              animate="visible"
-            >
+            <MotionCard position="sticky" top={24} variants={fadeInUp} initial="hidden" animate="visible">
               <Card.Body p={6}>
                 <VStack gap={4} align="stretch">
                   <Box>
-                    <Text fontSize="sm" color="gray.600" mb={1}>
-                      Price per night
-                    </Text>
+                    <Text fontSize="sm" color="gray.600" mb={1}>Price per night</Text>
                     <Heading as="h2" fontSize="3xl" color="blue.600">
                       ₦{shortlet.price_per_night_ngn.toLocaleString()}
                     </Heading>
@@ -533,19 +489,19 @@ export default function ShortletDetailPage() {
                   <Box borderTop="1px solid" borderColor="gray.200" pt={4}>
                     <VStack gap={3} align="stretch">
                       <HStack gap={2}>
-                        <Icon as={Home} color="gray.600" />
+                        <Home size={20} color="#6B7280" />
                         <Text fontSize="sm" color="gray.700">
                           {shortlet.bedrooms} Bedroom, {shortlet.bathrooms} Bathroom
                         </Text>
                       </HStack>
                       <HStack gap={2}>
-                        <Icon as={Users} color="gray.600" />
+                        <Users size={20} color="#6B7280" />
                         <Text fontSize="sm" color="gray.700">
                           Up to {shortlet.max_guests} guests
                         </Text>
                       </HStack>
                       <HStack gap={2}>
-                        <Icon as={Calendar} color="gray.600" />
+                        <Calendar size={20} color="#6B7280" />
                         <Text fontSize="sm" color="gray.700">
                           Min. stay: {shortlet.policies.minimum_stay}
                         </Text>
@@ -553,27 +509,12 @@ export default function ShortletDetailPage() {
                     </VStack>
                   </Box>
 
-                  <Button
-                    colorPalette="green"
-                    size="lg"
-                    w="full"
-                    as="a"
-                    href={whatsappLink}
-                    target="_blank"
-                  >
-                    <Icon as={MessageCircle} mr={2} />
+                  <Button colorPalette="green" size="lg" w="full" as="a" href={whatsappLink} target="_blank">
+                    <MessageCircle size={20} style={{ marginRight: '8px' }} />
                     Enquire on WhatsApp
                   </Button>
 
-                  <Button
-                    colorPalette="blue"
-                    variant="outline"
-                    size="lg"
-                    w="full"
-                    as="a"
-                    href={whatsappLink}
-                    target="_blank"
-                  >
+                  <Button colorPalette="blue" variant="outline" size="lg" w="full" as="a" href={whatsappLink} target="_blank">
                     Book Now
                   </Button>
 
@@ -589,22 +530,16 @@ export default function ShortletDetailPage() {
                   <Box borderTop="1px solid" borderColor="gray.200" pt={4}>
                     <VStack gap={2} align="stretch">
                       <HStack gap={2}>
-                        <Icon as={CheckCircle} color="green.500" boxSize={4} />
-                        <Text fontSize="xs" color="gray.600">
-                          Verified property
-                        </Text>
+                        <CheckCircle size={16} color="#10B981" />
+                        <Text fontSize="xs" color="gray.600">Verified property</Text>
                       </HStack>
                       <HStack gap={2}>
-                        <Icon as={CheckCircle} color="green.500" boxSize={4} />
-                        <Text fontSize="xs" color="gray.600">
-                          Secure payment via Paystack
-                        </Text>
+                        <CheckCircle size={16} color="#10B981" />
+                        <Text fontSize="xs" color="gray.600">Secure payment via Paystack</Text>
                       </HStack>
                       <HStack gap={2}>
-                        <Icon as={CheckCircle} color="green.500" boxSize={4} />
-                        <Text fontSize="xs" color="gray.600">
-                          24/7 support available
-                        </Text>
+                        <CheckCircle size={16} color="#10B981" />
+                        <Text fontSize="xs" color="gray.600">24/7 support available</Text>
                       </HStack>
                     </VStack>
                   </Box>
@@ -624,10 +559,8 @@ export default function ShortletDetailPage() {
           <Grid templateColumns={{ base: "1fr", md: "repeat(4, 1fr)" }} gap={6}>
             <Card.Root textAlign="center">
               <Card.Body p={6}>
-                <Icon as={Shield} boxSize={12} color="blue.600" mx="auto" mb={3} />
-                <Heading as="h3" fontSize="lg" mb={2}>
-                  Verified Properties
-                </Heading>
+                <Shield size={48} color="#2563EB" style={{ margin: '0 auto 12px' }} />
+                <Heading as="h3" fontSize="lg" mb={2}>Verified Properties</Heading>
                 <Text fontSize="sm" color="gray.600">
                   All listings are personally inspected and verified
                 </Text>
@@ -636,10 +569,8 @@ export default function ShortletDetailPage() {
 
             <Card.Root textAlign="center">
               <Card.Body p={6}>
-                <Icon as={MessageCircle} boxSize={12} color="green.600" mx="auto" mb={3} />
-                <Heading as="h3" fontSize="lg" mb={2}>
-                  Instant Support
-                </Heading>
+                <MessageCircle size={48} color="#10B981" style={{ margin: '0 auto 12px' }} />
+                <Heading as="h3" fontSize="lg" mb={2}>Instant Support</Heading>
                 <Text fontSize="sm" color="gray.600">
                   WhatsApp assistance available 24/7
                 </Text>
@@ -648,10 +579,8 @@ export default function ShortletDetailPage() {
 
             <Card.Root textAlign="center">
               <Card.Body p={6}>
-                <Icon as={CheckCircle} boxSize={12} color="purple.600" mx="auto" mb={3} />
-                <Heading as="h3" fontSize="lg" mb={2}>
-                  Flexible Booking
-                </Heading>
+                <CheckCircle size={48} color="#9333EA" style={{ margin: '0 auto 12px' }} />
+                <Heading as="h3" fontSize="lg" mb={2}>Flexible Booking</Heading>
                 <Text fontSize="sm" color="gray.600">
                   Easy check-in and fair cancellation policies
                 </Text>
@@ -660,10 +589,8 @@ export default function ShortletDetailPage() {
 
             <Card.Root textAlign="center">
               <Card.Body p={6}>
-                <Icon as={Star} boxSize={12} color="yellow.600" mx="auto" mb={3} />
-                <Heading as="h3" fontSize="lg" mb={2}>
-                  Best Locations
-                </Heading>
+                <Star size={48} color="#FBBF24" style={{ margin: '0 auto 12px' }} />
+                <Heading as="h3" fontSize="lg" mb={2}>Best Locations</Heading>
                 <Text fontSize="sm" color="gray.600">
                   Prime areas across Lagos with great access
                 </Text>

@@ -11,11 +11,11 @@ import {
   Grid,
   HStack,
   VStack,
-  Icon,
   Link,
   Input,
   Textarea,
   Select,
+  Image,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { 
@@ -95,19 +95,22 @@ export default function ContactPage() {
         <Container maxW="7xl" py={4}>
           <Flex justify="space-between" align="center">
             <HStack gap={2} as="a" href="/">
-              <Icon as={Plane} boxSize={8} color="blue.600" />
-              <Text fontSize="2xl" fontWeight="bold" color="gray.900">
-                Ontour Travels
-              </Text>
+              <Image 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
+                alt="Ontour Travels Logo"
+                h="60px"
+                w="auto"
+                objectFit="contain"
+              />
             </HStack>
             <HStack gap={6} display={{ base: "none", md: "flex" }}>
-              <Link href="/" color="gray.700">Home</Link>
-              <Link href="/book" color="gray.700">Flights & Hotels</Link>
-              <Link href="/shortlets" color="gray.700">Shortlets</Link>
-              <Link href="/tours" color="gray.700">Tours</Link>
-              <Link href="/about" color="gray.700">About</Link>
-              <Button colorPalette="blue" size="sm" as="a" href="https://wa.me/2348123456789" target="_blank">
-                <Icon as={MessageCircle} mr={1} />
+              <Link href="/" color="#2C2C2C" _hover={{ color: "#152852" }}>Home</Link>
+              <Link href="/book" color="#2C2C2C" _hover={{ color: "#152852" }}>Flights & Hotels</Link>
+              <Link href="/shortlets" color="#2C2C2C" _hover={{ color: "#152852" }}>Shortlets</Link>
+              <Link href="/tours" color="#2C2C2C" _hover={{ color: "#152852" }}>Tours</Link>
+              <Link href="/about" color="#2C2C2C" _hover={{ color: "#152852" }}>About</Link>
+              <Button bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} size="sm" as="a" href="https://wa.me/2348123456789" target="_blank">
+                <MessageCircle size={16} style={{ marginRight: '4px' }} />
                 WhatsApp
               </Button>
             </HStack>
@@ -117,7 +120,7 @@ export default function ContactPage() {
 
       {/* Hero Section */}
       <MotionBox
-        bg="blue.600"
+        bg="#152852"
         color="white"
         py={20}
         initial={{ opacity: 0 }}
@@ -133,7 +136,7 @@ export default function ContactPage() {
             <Heading as="h1" fontSize={{ base: "4xl", md: "5xl" }} fontWeight="bold" mb={4}>
               Get in Touch
             </Heading>
-            <Text fontSize="xl" color="blue.100">
+            <Text fontSize="xl" color="#FAFAFA">
               We're here to help with bookings, enquiries, and support.
             </Text>
           </MotionBox>
@@ -209,7 +212,7 @@ export default function ContactPage() {
                     textAlign="center"
                     py={12}
                   >
-                    <Icon as={CheckCircle} boxSize={16} color="green.500" mb={4} />
+                    <CheckCircle size={64} color="#10B981" style={{ margin: '0 auto 16px' }} />
                     <Heading as="h3" fontSize="xl" mb={2} color="gray.900">
                       Message Sent!
                     </Heading>
@@ -293,11 +296,13 @@ export default function ContactPage() {
 
                       <Button
                         type="submit"
-                        colorPalette="blue"
+                        bg="#152852"
+                        color="white"
+                        _hover={{ bg: "#0d1a35" }}
                         size="lg"
                         w="full"
-                        leftIcon={<Send />}
                       >
+                        <Send size={20} style={{ marginRight: '8px' }} />
                         Send Enquiry
                       </Button>
 
@@ -323,7 +328,7 @@ export default function ContactPage() {
               <Card.Root bg="white" p={6} boxShadow="md">
                 <Card.Body>
                   <HStack gap={3} mb={4}>
-                    <Icon as={Clock} boxSize={6} color="blue.600" />
+                    <Clock size={24} color="#152852" />
                     <Heading as="h3" fontSize="lg" color="gray.900">Support Hours</Heading>
                   </HStack>
                   <VStack align="start" gap={2}>
@@ -342,7 +347,7 @@ export default function ContactPage() {
               <Card.Root bg="white" p={6} boxShadow="md" id="office-location">
                 <Card.Body>
                   <HStack gap={3} mb={4}>
-                    <Icon as={MapPin} boxSize={6} color="blue.600" />
+                    <MapPin size={24} color="#152852" />
                     <Heading as="h3" fontSize="lg" color="gray.900">Our Office</Heading>
                   </HStack>
                   <VStack align="start" gap={2}>
@@ -356,7 +361,8 @@ export default function ContactPage() {
                       href="https://maps.google.com"
                       target="_blank"
                       variant="outline"
-                      colorPalette="blue"
+                      borderColor="#152852"
+                      color="#152852"
                       size="sm"
                       w="full"
                       mt={2}
@@ -377,8 +383,8 @@ export default function ContactPage() {
                       href="#"
                       variant="outline"
                       justifyContent="start"
-                      leftIcon={<Facebook />}
                     >
+                      <Facebook size={20} style={{ marginRight: '8px' }} />
                       Facebook
                     </Button>
                     <Button
@@ -386,8 +392,8 @@ export default function ContactPage() {
                       href="#"
                       variant="outline"
                       justifyContent="start"
-                      leftIcon={<Twitter />}
                     >
+                      <Twitter size={20} style={{ marginRight: '8px' }} />
                       Twitter
                     </Button>
                     <Button
@@ -395,8 +401,8 @@ export default function ContactPage() {
                       href="#"
                       variant="outline"
                       justifyContent="start"
-                      leftIcon={<Instagram />}
                     >
+                      <Instagram size={20} style={{ marginRight: '8px' }} />
                       Instagram
                     </Button>
                   </VStack>
@@ -408,7 +414,7 @@ export default function ContactPage() {
       </Container>
 
       {/* CTA Section */}
-      <Box bg="blue.600" color="white" py={16}>
+      <Box bg="#152852" color="white" py={16}>
         <Container maxW="4xl">
           <MotionBox
             textAlign="center"
@@ -420,11 +426,11 @@ export default function ContactPage() {
             <Heading as="h2" fontSize="3xl" mb={4}>
               Ready to Book? Let's Make It Seamless.
             </Heading>
-            <Text fontSize="lg" color="blue.100" mb={8}>
+            <Text fontSize="lg" color="#FAFAFA" mb={8}>
               Start planning your next adventure with Ontour Travels
             </Text>
             <HStack gap={4} justify="center" flexWrap="wrap">
-              <Button as="a" href="/book" colorPalette="blue" bg="white" color="blue.600" size="lg" _hover={{ bg: "gray.100" }}>
+              <Button as="a" href="/book" bg="white" color="#152852" size="lg" _hover={{ bg: "gray.100" }}>
                 Book Flights & Hotels
               </Button>
               <Button as="a" href="/shortlets" variant="outline" borderColor="white" color="white" size="lg" _hover={{ bg: "whiteAlpha.200" }}>
@@ -436,47 +442,52 @@ export default function ContactPage() {
       </Box>
 
       {/* Footer */}
-      <Box bg="gray.900" color="white" py={12}>
+      <Box bg="#2C2C2C" color="white" py={12}>
         <Container maxW="7xl">
           <Grid templateColumns={{ base: "1fr", md: "repeat(4, 1fr)" }} gap={8}>
             <Box>
               <HStack gap={2} mb={4}>
-                <Icon as={Plane} boxSize={8} color="blue.400" />
-                <Text fontSize="2xl" fontWeight="bold">Ontour Travels</Text>
+                <Image 
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ontour_logo-removebg-preview-1762616230494.png?width=8000&height=8000&resize=contain"
+                  alt="Ontour Travels Logo"
+                  h="40px"
+                  w="auto"
+                  objectFit="contain"
+                />
               </HStack>
-              <Text color="gray.400" fontSize="sm">
+              <Text color="#E5E5E5" fontSize="sm">
                 Your trusted partner for travel and experiences.
               </Text>
             </Box>
             <Box>
               <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Quick Links</Heading>
               <VStack align="start" gap={2}>
-                <Link href="/" color="gray.400" _hover={{ color: "white" }}>Home</Link>
-                <Link href="/book" color="gray.400" _hover={{ color: "white" }}>Flights & Hotels</Link>
-                <Link href="/shortlets" color="gray.400" _hover={{ color: "white" }}>Shortlets</Link>
-                <Link href="/tours" color="gray.400" _hover={{ color: "white" }}>Tours</Link>
+                <Link href="/" color="#E5E5E5" _hover={{ color: "white" }}>Home</Link>
+                <Link href="/book" color="#E5E5E5" _hover={{ color: "white" }}>Flights & Hotels</Link>
+                <Link href="/shortlets" color="#E5E5E5" _hover={{ color: "white" }}>Shortlets</Link>
+                <Link href="/tours" color="#E5E5E5" _hover={{ color: "white" }}>Tours</Link>
               </VStack>
             </Box>
             <Box>
               <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Support</Heading>
               <VStack align="start" gap={2}>
-                <Link href="/about" color="gray.400" _hover={{ color: "white" }}>About Us</Link>
-                <Link href="#" color="gray.400" _hover={{ color: "white" }}>FAQ</Link>
-                <Link href="#" color="gray.400" _hover={{ color: "white" }}>Terms & Conditions</Link>
-                <Link href="#" color="gray.400" _hover={{ color: "white" }}>Privacy Policy</Link>
+                <Link href="/about" color="#E5E5E5" _hover={{ color: "white" }}>About Us</Link>
+                <Link href="/faq" color="#E5E5E5" _hover={{ color: "white" }}>FAQ</Link>
+                <Link href="/terms" color="#E5E5E5" _hover={{ color: "white" }}>Terms & Conditions</Link>
+                <Link href="/privacy" color="#E5E5E5" _hover={{ color: "white" }}>Privacy Policy</Link>
               </VStack>
             </Box>
             <Box>
               <Heading as="h3" fontSize="lg" fontWeight="bold" mb={4}>Contact</Heading>
               <VStack align="start" gap={2}>
-                <Text color="gray.400" fontSize="sm">+234 812 345 6789</Text>
-                <Text color="gray.400" fontSize="sm">info@ontourtravels.com.ng</Text>
-                <Text color="gray.400" fontSize="sm">Mon–Sat, 9 AM – 6 PM WAT</Text>
+                <Text color="#E5E5E5" fontSize="sm">+234 812 345 6789</Text>
+                <Text color="#E5E5E5" fontSize="sm">info@ontourtravels.com.ng</Text>
+                <Text color="#E5E5E5" fontSize="sm">Mon–Sat, 9 AM – 6 PM WAT</Text>
               </VStack>
             </Box>
           </Grid>
-          <Box borderTop="1px" borderColor="gray.800" pt={8} mt={8} textAlign="center" color="gray.400">
-            <Text fontSize="sm">&copy; 2024 Ontour Travels. All rights reserved. Made with <Text as="span" color="red.500">💓</Text> by <Link href="https://github.com/peldevon" target="_blank" rel="noopener noreferrer" _hover={{ color: "blue.400" }}>Peldevon</Link></Text>
+          <Box borderTop="1px" borderColor="gray.800" pt={8} mt={8} textAlign="center" color="#E5E5E5">
+            <Text fontSize="sm">&copy; 2024 Ontour Travels. All rights reserved. Made with <Text as="span" color="red.500">💓</Text> by <Link href="https://github.com/peldevon" target="_blank" rel="noopener noreferrer" _hover={{ color: "#C9A449" }}>Peldevon</Link></Text>
           </Box>
         </Container>
       </Box>
@@ -484,7 +495,7 @@ export default function ContactPage() {
   );
 }
 
-function ContactOptionCard({ icon, title, description, action, href, color }: any) {
+function ContactOptionCard({ icon: IconComponent, title, description, action, href, color }: any) {
   return (
     <MotionCard
       as="a"
@@ -509,7 +520,7 @@ function ContactOptionCard({ icon, title, description, action, href, color }: an
             alignItems="center"
             justifyContent="center"
           >
-            <Icon as={icon} boxSize={8} color={`${color}.600`} />
+            <IconComponent size={32} color={color === "green" ? "#10B981" : color === "blue" ? "#3B82F6" : color === "purple" ? "#A855F7" : "#F97316"} />
           </Box>
           <Heading as="h3" fontSize="lg" fontWeight="bold" color="gray.900">
             {title}
@@ -517,7 +528,7 @@ function ContactOptionCard({ icon, title, description, action, href, color }: an
           <Text fontSize="sm" color="gray.600">
             {description}
           </Text>
-          <Text fontSize="sm" fontWeight="medium" color={`${color}.600`}>
+          <Text fontSize="sm" fontWeight="medium" color={color === "green" ? "#10B981" : color === "blue" ? "#3B82F6" : color === "purple" ? "#A855F7" : "#F97316"}>
             {action}
           </Text>
         </Flex>

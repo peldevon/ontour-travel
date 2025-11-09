@@ -12,7 +12,6 @@ import {
   Grid,
   HStack,
   VStack,
-  Icon,
   Link,
   Badge,
   Tabs,
@@ -140,7 +139,7 @@ export default function ToursPage() {
               <Link href="/about" color="#2C2C2C" _hover={{ color: "#152852" }}>About</Link>
               <Link href="/contact" color="#2C2C2C" _hover={{ color: "#152852" }}>Contact</Link>
               <Button bg="#152852" color="white" _hover={{ bg: "#0d1a35" }} size="sm" as="a" href="https://wa.me/2348123456789" target="_blank">
-                <Icon as={MessageCircle} mr={1} />
+                <MessageCircle size={16} style={{ marginRight: '4px' }} />
                 WhatsApp
               </Button>
             </HStack>
@@ -195,15 +194,15 @@ export default function ToursPage() {
                   All Tours
                 </Tabs.Trigger>
                 <Tabs.Trigger value="local" fontWeight="medium">
-                  <Icon as={Home} mr={2} />
+                  <Home size={20} style={{ marginRight: '8px' }} />
                   Local (Nigeria)
                 </Tabs.Trigger>
                 <Tabs.Trigger value="regional" fontWeight="medium">
-                  <Icon as={Map} mr={2} />
+                  <Map size={20} style={{ marginRight: '8px' }} />
                   Regional (Africa)
                 </Tabs.Trigger>
                 <Tabs.Trigger value="international" fontWeight="medium">
-                  <Icon as={Globe} mr={2} />
+                  <Globe size={20} style={{ marginRight: '8px' }} />
                   International
                 </Tabs.Trigger>
               </Tabs.List>
@@ -263,8 +262,8 @@ export default function ToursPage() {
                 color="white"
                 _hover={{ bg: "#1da851" }}
                 size="lg"
-                leftIcon={<MessageCircle />}
               >
+                <MessageCircle size={20} style={{ marginRight: '8px' }} />
                 Plan My Custom Trip
               </Button>
               <Button
@@ -472,18 +471,18 @@ function TourCard({ tour, router }: { tour: Tour; router: any }) {
         </Heading>
         <HStack gap={4} mb={4}>
           <HStack gap={1}>
-            <Icon as={Clock} boxSize={4} color="gray.500" />
+            <Clock size={16} color="#6B7280" />
             <Text fontSize="sm" color="gray.600">{tour.duration_days}D/{tour.duration_nights}N</Text>
           </HStack>
           <HStack gap={1}>
-            <Icon as={Calendar} boxSize={4} color="gray.500" />
+            <Calendar size={16} color="#6B7280" />
             <Text fontSize="sm" color="gray.600">{tour.seasonality.includes(':') ? tour.seasonality.split(':')[1].trim() : tour.seasonality}</Text>
           </HStack>
         </HStack>
         <VStack align="start" gap={2} mb={4}>
           {tour.highlights.slice(0, 3).map((highlight: string) => (
             <HStack key={highlight} gap={2}>
-              <Icon as={CheckCircle} boxSize={4} color="green.500" />
+              <CheckCircle size={16} color="#10B981" />
               <Text fontSize="sm" color="gray.700">{highlight}</Text>
             </HStack>
           ))}
@@ -506,7 +505,7 @@ function TourCard({ tour, router }: { tour: Tour; router: any }) {
               variant="outline"
               colorPalette="green"
             >
-              <Icon as={MessageCircle} />
+              <MessageCircle size={20} />
             </Button>
           </Flex>
         </Box>
@@ -515,7 +514,7 @@ function TourCard({ tour, router }: { tour: Tour; router: any }) {
   );
 }
 
-function FeatureCard({ icon, title, description }: any) {
+function FeatureCard({ icon: IconComponent, title, description }: any) {
   return (
     <MotionBox
       variants={fadeInUp}
@@ -533,7 +532,7 @@ function FeatureCard({ icon, title, description }: any) {
           alignItems="center"
           justifyContent="center"
         >
-          <Icon as={icon} boxSize={8} color="#152852" />
+          <IconComponent size={32} color="#152852" />
         </Box>
         <Heading as="h3" fontSize="lg" fontWeight="bold">
           {title}
