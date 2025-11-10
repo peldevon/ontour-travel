@@ -267,17 +267,18 @@ export default function ContactPage() {
                           value={formData.service ? [formData.service] : []}
                           onValueChange={(e) => setFormData({ ...formData, service: e.value[0] })}
                           size="lg"
+                          positioning={{ sameWidth: true }}
                         >
-                          <Select.Trigger>
+                          <Select.Trigger placeholder="Select a service">
                             <Select.ValueText placeholder="Select a service" />
                           </Select.Trigger>
                           <Select.Content>
-                            <Select.Item value="flights">Flights</Select.Item>
-                            <Select.Item value="hotels">Hotels</Select.Item>
-                            <Select.Item value="shortlets">Shortlets</Select.Item>
-                            <Select.Item value="tours">Tours</Select.Item>
-                            <Select.Item value="visa">Visa Advisory</Select.Item>
-                            <Select.Item value="other">Other</Select.Item>
+                            <Select.Item item="flights" value="flights">Flights</Select.Item>
+                            <Select.Item item="hotels" value="hotels">Hotels</Select.Item>
+                            <Select.Item item="shortlets" value="shortlets">Shortlets</Select.Item>
+                            <Select.Item item="tours" value="tours">Tours</Select.Item>
+                            <Select.Item item="visa" value="visa">Visa Advisory</Select.Item>
+                            <Select.Item item="other" value="other">Other</Select.Item>
                           </Select.Content>
                         </Select.Root>
                       </Box>
