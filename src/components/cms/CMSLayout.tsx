@@ -24,6 +24,8 @@ import {
   LogOut,
   Menu,
   X,
+  ImageIcon,
+  Settings,
 } from "lucide-react";
 
 interface CMSLayoutProps {
@@ -56,8 +58,11 @@ export default function CMSLayout({ children }: CMSLayoutProps) {
 
   const menuItems = [
     { label: "Dashboard", icon: Home, href: "/cms/dashboard" },
+    { label: "Pages", icon: FileText, href: "/cms/pages" },
     { label: "Shortlets", icon: Building, href: "/cms/shortlets" },
     { label: "Tours", icon: Map, href: "/cms/tours" },
+    { label: "Media", icon: ImageIcon, href: "/cms/media" },
+    { label: "Settings", icon: Settings, href: "/cms/settings" },
   ];
 
   if (!user) {
